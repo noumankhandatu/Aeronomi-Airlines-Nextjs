@@ -1,15 +1,14 @@
 import React, { useState } from "react";
-// Import LogisticsCard
 import LogisticsCard from "./LogisticsCard";
-// Import LogisticsData
 import { LogisticsData } from "./Logistics_Data";
-// import Section Heading
 import SectionHeading from "../../Common/SectionHeading";
-//  OwlCarousel Slider Import
-import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
+import dynamic from "next/dynamic";
 
+const OwlCarousel = dynamic(() => import("react-owl-carousel"), {
+  ssr: false,
+});
 const LogisticsService = () => {
   const [sliderIndex, setSliderIndex] = useState(0);
 
