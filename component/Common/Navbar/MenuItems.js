@@ -5,16 +5,18 @@ const MenuItems = (props) => {
   return (
     <>
       <li className="nav-item">
-        <div href={props.item.href} className="nav-link">
-          {props.item.name}
-          {props.item.has_children && <i className="fas fa-angle-down"></i>}
-        </div>
-        {/* <Link href={props.item.href} className="nav-link">
-          {props.item.name}
-          {props.item.has_children && <i className="fas fa-angle-down"></i>}
-        </Link> */}
+        <Link href={props.item.href} className="nav-link">
+          <div className="header-lis">
+            {props.item.name}
+            {props.item.has_children && <i className="fas fa-angle-down"></i>}
+          </div>
+        </Link>
+
         {props.item.has_children && (
-          <ul className="dropdown-menu">
+          <ul
+            className="dropdown-menu"
+            style={{ top: "35px", padding: "15px", lineHeight: "40px" }}
+          >
             {props.item.children.map((item, index) => (
               <MenuItems item={item} key={index} />
             ))}

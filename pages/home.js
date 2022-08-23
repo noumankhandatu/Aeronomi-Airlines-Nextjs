@@ -13,7 +13,6 @@ import BlogHome from "../component/Common/Blog";
 const LandingPage = () => {
   return (
     <>
-      
       <HomeBanner />
       <GetSchedule />
       <LogisticsService />

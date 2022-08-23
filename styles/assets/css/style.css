@@ -1795,12 +1795,14 @@ Search Overlay CSS
 }
 
 .banner-item {
+  margin: 0px !important;
+  padding: 0px !important;
   padding-top: 145px;
   height: 100vh;
+  width: 100vw;
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  position: relative;
   display: flex;
   align-items: center;
 }

@@ -1,28 +1,8 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
+.header-lis {
+  color: #301d44;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
 }
 .jhmYzC {
   box-shadow: none !important;
@@ -61,4 +41,14 @@ a {
   -moz-border-radius: 30px !important;
   -ms-border-radius: 30px !important;
   -o-border-radius: 30px !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+  body {
+    color: white;
+    background: black;
+  }
 }
