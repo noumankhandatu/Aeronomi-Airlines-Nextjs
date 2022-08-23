@@ -1,18 +1,66 @@
-import React from "react";
-
-// import Section Heading
+import React, { useState, useEffect } from "react";
+import Prismic from "prismic-javascript";
 import SectionHeading from "../../Common/SectionHeading";
+import { Client } from "../../../prismic-configuration";
 
 const GetSchedule = () => {
+  const [toggleFn, setToggleFn] = useState(true);
+  const [fetchData, setFetchData] = useState("");
+  async function getServerSideProps() {
+    const home = await Client().query(
+      Prismic.Predicates.at("document.type", "home")
+    );
+    setFetchData(home);
+    return {
+      props: {
+        home,
+      },
+    };
+  }
+  if (toggleFn) {
+    getServerSideProps();
+    setToggleFn(!toggleFn);
+  }
+  const title = fetchData?.results?.map((items) => {
+    return items.data.body[1].items[0].title;
+  });
+  const description = fetchData?.results?.map((items) => {
+    return items.data.body[1].items[0].description;
+  });
+  const TrackOne = fetchData?.results?.map((items) => {
+    return items.data.trackone;
+  });
+  const TrackTwo = fetchData?.results?.map((items) => {
+    return items.data.tracktwo;
+  });
+  const TrackThree = fetchData?.results?.map((items) => {
+    return items.data.trackthree;
+  });
+  const containersone = fetchData?.results?.map((items) => {
+    return items.data.containersone;
+  });
+  const containertwo = fetchData?.results?.map((items) => {
+    return items.data.containertwo;
+  });
+  const emailone = fetchData?.results?.map((items) => {
+    return items.data.emailone;
+  });
+  const emailtwo = fetchData?.results?.map((items) => {
+    return items.data.emailtwo;
+  });
+  const scheduleone = fetchData?.results?.map((items) => {
+    return items.data.scheduleone;
+  });
+
+  useEffect(() => {
+    getServerSideProps();
+  }, []);
+
   return (
     <>
       <section id="schedule_one">
         <div className="container">
-          <SectionHeading
-            heading="Get a Schedule"
-            para="Solving your supply chain needs from end to end, taking the
-             complexity out of container shipping. We are at the forefront of developing innovation."
-          />
+          <SectionHeading heading={title} para={description} />
           <div className="row">
             <div className="col-md-12">
               <nav>
@@ -72,7 +120,7 @@ const GetSchedule = () => {
                         />
                       </g>
                     </svg>
-                    <h6> Track My Shipment</h6>
+                    <h6> {TrackOne}</h6>
                   </a>
                   <a
                     className="nav-item nav-link nav-two"
@@ -268,7 +316,7 @@ const GetSchedule = () => {
                         />
                       </g>
                     </svg>
-                    <h6>Get a Schedule</h6>
+                    <h6>{scheduleone}</h6>
                   </a>
                 </div>
               </nav>
@@ -283,20 +331,20 @@ const GetSchedule = () => {
                     <div className="row">
                       <div className="col-md-4">
                         <div className="form-group">
-                          <label htmlFor="number">Containers no or B/L</label>
+                          <label htmlFor="number">{containersone}</label>
                           <input type="text" className="form-control" />
                         </div>
                       </div>
                       <div className="col-md-4">
                         <div className="form-group">
-                          <label htmlFor="email">Email Address</label>
+                          <label htmlFor="email">{emailone}</label>
                           <input type="text" className="form-control ma-inp" />
                         </div>
                       </div>
                       <div className="col-md-4">
                         <div className="form-group">
                           <button type="submit" className="btn btn-theme">
-                            Track Shipment
+                            {TrackTwo}
                           </button>
                         </div>
                       </div>
@@ -313,20 +361,20 @@ const GetSchedule = () => {
                     <div className="row">
                       <div className="col-md-4 ">
                         <div className="form-group">
-                          <label htmlFor="number">Containers no or B/L</label>
+                          <label htmlFor="number">{containertwo}</label>
                           <input type="number" className="form-control" />
                         </div>
                       </div>
                       <div className="col-md-4">
                         <div className="form-group">
-                          <label htmlFor="email">Email Address</label>
+                          <label htmlFor="email">{emailtwo}</label>
                           <input type="text" className="form-control ma-inp" />
                         </div>
                       </div>
                       <div className="col-md-4">
                         <div className="form-group">
                           <button type="submit" className="btn btn-theme">
-                            Track Shipment
+                            {TrackThree}
                           </button>
                         </div>
                       </div>

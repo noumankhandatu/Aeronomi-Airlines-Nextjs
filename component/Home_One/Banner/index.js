@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Carousel from "react-elastic-carousel";
-
+import Prismic from "prismic-javascript";
+import { Client } from "../../../prismic-configuration";
 const HomeBanner = () => {
   const breakPoints = [
     { width: 1, itemsToShow: 1 },
@@ -9,6 +10,69 @@ const HomeBanner = () => {
     { width: 768, itemsToShow: 1 },
     { width: 1200, itemsToShow: 1 },
   ];
+
+  const [toggleFn, setToggleFn] = useState(true);
+  const [fetchData, setFetchData] = useState("");
+  async function getServerSideProps() {
+    const home = await Client().query(
+      Prismic.Predicates.at("document.type", "home")
+    );
+    setFetchData(home);
+    return {
+      props: {
+        home,
+      },
+    };
+  }
+  if (toggleFn) {
+    getServerSideProps();
+    setToggleFn(!toggleFn);
+  }
+  const mapper = fetchData?.results?.map((items) => {
+    return items?.data?.body[0]?.items;
+  });
+  const firstCaroBtnText = mapper?.map((items) => {
+    return items[0].buttontext;
+  });
+
+  const firstCaroImageOne = mapper?.map((items) => {
+    return items[0].image1.url;
+  });
+  const firstCaroBtnDes = mapper?.map((items) => {
+    return items[0].description;
+  });
+  const firstCaroBtnTitle = mapper?.map((items) => {
+    return items[0].title1;
+  });
+
+  const SecondCaroImageOne = mapper?.map((items) => {
+    return items[1].image1.url;
+  });
+  const SecondCaroBtnText = mapper?.map((items) => {
+    return items[1].buttontext;
+  });
+  const SecondCaroDes = mapper?.map((items) => {
+    return items[1].description;
+  });
+  const SecondCaroTitle = mapper?.map((items) => {
+    return items[1].title1;
+  });
+
+  const ThirdCaroImageOne = mapper?.map((items) => {
+    return items[2].image1.url;
+  });
+  const ThirdCaroBtnText = mapper?.map((items) => {
+    return items[2].buttontext;
+  });
+  const ThirdCaroDes = mapper?.map((items) => {
+    return items[2].description;
+  });
+  const ThirdCaroTitle = mapper?.map((items) => {
+    return items[2].title1;
+  });
+  useEffect(() => {
+    getServerSideProps();
+  }, []);
   return (
     <div>
       <section id="homeOne_banner">
@@ -20,9 +84,9 @@ const HomeBanner = () => {
             breakPoints={breakPoints}
           >
             <div
-              className="banner-item"
+              className="banner-item "
               style={{
-                backgroundImage: `url(${"https://picsum.photos/200/300"})`,
+                backgroundImage: `url(${firstCaroImageOne})`,
               }}
             >
               <div className="container">
@@ -31,16 +95,14 @@ const HomeBanner = () => {
                     <div className="col-lg-8 col-md-12 col-sm-12 col-12">
                       <div className="banner-text">
                         <h1>
-                          Shipping Products <br />
-                          Worldwide
+                          {firstCaroBtnTitle}
+                          <br />
                         </h1>
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit, sed do eiusmod tempor incididunt ut labore et
-                          dolore magna aliqua quis ipsum suspendisse.
-                        </p>
-                        <Link className="btn btn-theme" href="/request_quote">
-                          Get A Quote
+                        <p>{firstCaroBtnDes}</p>
+                        <Link href="/contact">
+                          <div className="btn btn-theme">
+                            {`${firstCaroBtnText}`}
+                          </div>
                         </Link>
                       </div>
                     </div>
@@ -49,10 +111,10 @@ const HomeBanner = () => {
               </div>
             </div>
             <div
+              className="banner-item "
               style={{
-                backgroundImage: `url(${"https://picsum.photos/200/300"})`,
+                backgroundImage: `url(${SecondCaroImageOne})`,
               }}
-              className="banner-item banner-img-two"
             >
               <div className="container">
                 <div className="banner_one_inner">
@@ -60,16 +122,16 @@ const HomeBanner = () => {
                     <div className="col-lg-8 col-md-12 col-sm-12 col-12">
                       <div className="banner-text">
                         <h1>
-                          Shipping Products <br />
-                          Worldwide
+                          {SecondCaroTitle
+                            ? SecondCaroTitle
+                            : `Revolutionizing the way you charter!`}
+                          <br />
                         </h1>
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit, sed do eiusmod tempor incididunt ut labore et
-                          dolore magna aliqua quis ipsum suspendisse.
-                        </p>
-                        <Link className="btn btn-theme" href="/request_quote">
-                          Get A Quote
+                        <p>{SecondCaroDes}</p>
+                        <Link href="/contact">
+                          <div className="btn btn-theme">
+                            {`${SecondCaroBtnText}`}
+                          </div>
                         </Link>
                       </div>
                     </div>
@@ -78,10 +140,10 @@ const HomeBanner = () => {
               </div>
             </div>
             <div
+              className="banner-item "
               style={{
-                backgroundImage: `url(${"https://picsum.photos/200/300"})`,
+                backgroundImage: `url(${ThirdCaroImageOne})`,
               }}
-              className="banner-item banner-img-three"
             >
               <div className="container">
                 <div className="banner_one_inner">
@@ -89,16 +151,14 @@ const HomeBanner = () => {
                     <div className="col-lg-8 col-md-12 col-sm-12 col-12">
                       <div className="banner-text">
                         <h1>
-                          Shipping Products <br />
-                          Worldwide
+                          {ThirdCaroTitle}
+                          <br />
                         </h1>
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit, sed do eiusmod tempor incididunt ut labore et
-                          dolore magna aliqua quis ipsum suspendisse.
-                        </p>
-                        <Link className="btn btn-theme" href="/request_quote">
-                          Get A Quote
+                        <p>{ThirdCaroDes}</p>
+                        <Link className="btn btn-theme" href="/contact">
+                          <div className="btn btn-theme">
+                            {`${ThirdCaroBtnText}`}
+                          </div>
                         </Link>
                       </div>
                     </div>
@@ -107,7 +167,6 @@ const HomeBanner = () => {
               </div>
             </div>
           </Carousel>
-          <h1>ladk</h1>
         </div>
         <div className="banner_social_icon">
           <ul>

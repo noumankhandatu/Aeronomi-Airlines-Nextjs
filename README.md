@@ -1,3 +1,32 @@
+
+import Prismic from "prismic-javascript";
+import { Client } from "../../../prismic-configuration";
+
+
+const [toggleFn, setToggleFn] = useState(true);
+  const [fetchData, setFetchData] = useState("");
+  async function getServerSideProps() {
+    const home = await Client().query(
+      Prismic.Predicates.at("document.type", "home")
+    );
+    setFetchData(home);
+    return {
+      props: {
+        home,
+      },
+    };
+  }
+  if (toggleFn) {
+    getServerSideProps();
+    setToggleFn(!toggleFn);
+  }
+
+
+
+
+  
+
+
 import Carousel from "react-elastic-carousel";
 
 

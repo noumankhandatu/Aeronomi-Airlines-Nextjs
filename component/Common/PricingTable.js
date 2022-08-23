@@ -1,44 +1,187 @@
-import React from "react";
-import Link from 'next/link'
+import React, { useState, useEffect } from "react";
+import Link from "next/link";
 import SectionHeading from "./SectionHeading";
-
-const pricingData = [
-  {
-    title: "Basic Plan",
-    amount: "8.9",
-    items: [
-      { icons: "fa fa-check", text: "Standard Feature" },
-      { icons: "fa fa-check", text: "Lifetime free support" },
-      { icons: "fa fa-times", text: "Extra features" },
-      { icons: "fa fa-check", text: "Upgrate options" },
-      { icons: "fa fa-check", text: "Full access" },
-    ],
-  },
-  {
-    title: "Popular Plan",
-    amount: "29.9",
-    items: [
-      { icons: "fa fa-check", text: "Standard Feature" },
-      { icons: "fa fa-check", text: "Lifetime free support" },
-      { icons: "fa fa-times", text: "Extra features" },
-      { icons: "fa fa-check", text: "Upgrate options" },
-      { icons: "fa fa-check", text: "Full access" },
-    ],
-  },
-  {
-    title: "Premium Plan",
-    amount: "88.9",
-    items: [
-      { icons: "fa fa-check", text: "Standard Feature" },
-      { icons: "fa fa-check", text: "Lifetime free support" },
-      { icons: "fa fa-times", text: "Extra features" },
-      { icons: "fa fa-check", text: "Upgrate options" },
-      { icons: "fa fa-check", text: "Full access" },
-    ],
-  },
-];
+import Prismic from "prismic-javascript";
+import { Client } from "../../prismic-configuration";
 
 const PricingTable = () => {
+  const [toggleFn, setToggleFn] = useState(true);
+  const [fetchData, setFetchData] = useState("");
+  async function getServerSideProps() {
+    const home = await Client().query(
+      Prismic.Predicates.at("document.type", "home")
+    );
+    setFetchData(home);
+    return {
+      props: {
+        home,
+      },
+    };
+  }
+  if (toggleFn) {
+    getServerSideProps();
+    setToggleFn(!toggleFn);
+  }
+
+  const titleOne = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[0].title;
+  });
+  const amountOne = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[0].amount;
+  });
+
+  const iconone = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[0].iconone;
+  });
+  const icontwo = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[0].icontwo;
+  });
+  const iconthree = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[0].iconthree;
+  });
+  const iconfour = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[0].iconfour;
+  });
+  const iconfive = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[0].iconfive;
+  });
+  const featureone = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[0].featureone;
+  });
+  const featuretwo = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[0].featuretwo;
+  });
+  const featurethree = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[0].featurethree;
+  });
+  const featurefour = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[0].featurefour;
+  });
+  const featurefive = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[0].featurefive;
+  });
+
+  const titleTwo = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[1].title;
+  });
+  const amountTwo = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[1].amount;
+  });
+
+  const iconones = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[1].iconone;
+  });
+  const icontwos = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[1].icontwo;
+  });
+  const iconthrees = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[1].iconthree;
+  });
+  const iconfours = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[1].iconfour;
+  });
+  const iconfives = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[1].iconfive;
+  });
+  const featureones = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[1].featureone;
+  });
+  const featuretwos = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[1].featuretwo;
+  });
+  const featurethrees = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[1].featurethree;
+  });
+  const featurefours = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[1].featurefour;
+  });
+  const featurefives = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[1].featurefive;
+  });
+
+  const titleThree = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[2].title;
+  });
+  const amountThree = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[2].amount;
+  });
+
+  const icononest = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[2].iconone;
+  });
+  const icontwost = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[2].icontwo;
+  });
+  const iconthreest = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[2].iconthree;
+  });
+  const iconfourst = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[2].iconfour;
+  });
+  const iconfivest = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[2].iconfive;
+  });
+  const featureonest = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[2].featureone;
+  });
+  const featuretwost = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[2].featuretwo;
+  });
+  const featurethreest = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[2].featurethree;
+  });
+  const featurefourst = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[2].featurefour;
+  });
+  const featurefivest = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[2].featurefive;
+  });
+  const buttonText = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[2].buttontext;
+  });
+  const perMonth = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[2].permonth;
+  });
+  const pricingData = [
+    {
+      title: titleOne,
+      amount: amountOne,
+      items: [
+        { icons: iconone, text: featureone },
+        { icons: icontwo, text: featuretwo },
+        { icons: iconthree, text: featurethree },
+        { icons: iconfour, text: featurefour },
+        { icons: iconfive, text: featurefive },
+      ],
+    },
+    {
+      title: titleTwo,
+      amount: amountTwo,
+      items: [
+        { icons: iconones, text: featureones },
+        { icons: icontwos, text: featuretwos },
+        { icons: iconthrees, text: featurethrees },
+        { icons: iconfours, text: featurefours },
+        { icons: iconfives, text: featurefives },
+      ],
+    },
+    {
+      title: titleThree,
+      amount: amountThree,
+      items: [
+        { icons: icononest, text: featureonest },
+        { icons: icontwost, text: featuretwost },
+        { icons: iconthreest, text: featurethreest },
+        { icons: iconfourst, text: featurefourst },
+        { icons: iconfivest, text: featurefivest },
+      ],
+    },
+  ];
+
+  useEffect(() => {
+    getServerSideProps();
+  }, []);
+
   return (
     <>
       <section id="home_pricing_area">

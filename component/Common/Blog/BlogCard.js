@@ -21,15 +21,17 @@ const BlogCard = (props) => {
             {props.date}
           </h6>
           <h5>
-            <Link href="/blog_details">{props.heading}</Link>
+            <a href="/blog_details">{props.heading}</a>
           </h5>
           <p>{props.para}</p>
-          <a href="/blog_details" className="author_name">
-            <i className="far fa-user"></i>
-            {props.name}{" "}
-          </a>
-          <Link href="/blog_details" className="blog_comments">
-            <i className="far fa-comment">{props.comment}</i>
+          <Link href="/blog_details">
+            <div className="author_name">
+              <i className="far fa-user"></i>
+              {props.name}
+            </div>
+          </Link>
+          <Link href="/blog_details" className="">
+            <i className="far fa-comment blog_comments">{props.comment}</i>
           </Link>
         </div>
       </div>
