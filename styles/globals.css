@@ -24,3 +24,41 @@ a {
     background: black;
   }
 }
+.jhmYzC {
+  box-shadow: none !important;
+  background: var(--heading-color) !important;
+  width: 20px !important;
+  height: 9px !important;
+  margin: 5px 7px !important;
+  background: var(--heading-color) !important;
+  display: block !important;
+  transition: opacity 0.2s ease !important;
+  border-radius: 30px !important;
+  -webkit-transition: opacity 0.2s ease !important;
+  -moz-transition: opacity 0.2s ease !important;
+  -ms-transition: opacity 0.2s ease !important;
+  -o-transition: opacity 0.2s ease !important;
+  -webkit-border-radius: 30px !important;
+  -moz-border-radius: 30px !important;
+  -ms-border-radius: 30px !important;
+  -o-border-radius: 30px !important;
+}
+.krmNah {
+  box-shadow: none !important;
+  background: var(--heading-color) !important;
+  width: 20px !important;
+  height: 9px !important;
+  margin: 5px 7px !important;
+  background: var(--main-theme-color) !important;
+  display: block !important;
+  transition: opacity 0.2s ease !important;
+  border-radius: 30px !important;
+  -webkit-transition: opacity 0.2s ease !important;
+  -moz-transition: opacity 0.2s ease !important;
+  -ms-transition: opacity 0.2s ease !important;
+  -o-transition: opacity 0.2s ease !important;
+  -webkit-border-radius: 30px !important;
+  -moz-border-radius: 30px !important;
+  -ms-border-radius: 30px !important;
+  -o-border-radius: 30px !important;
+}

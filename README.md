@@ -1,3 +1,23 @@
+import Carousel from "react-elastic-carousel";
+const breakPoints = [
+  { width: 1, itemsToShow: 1 },
+  { width: 550, itemsToShow: 2, itemsToScroll: 2 },
+  { width: 768, itemsToShow: 3 },
+  { width: 1200, itemsToShow: 4 },
+];
+  <div className="carousel-wrapper">
+        <Carousel  itemPadding={[5]}
+                  enableAutoPlay={true}
+                  autoPlaySpeed={2000}
+                  showArrows={false}
+                  breakPoints={breakPoints}>
+          {items.map((item) => (
+            <h1 key={item}>{item}</h1>
+          ))}
+        </Carousel>
+      </div>
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
@@ -32,3 +52,16 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+export async function getServerSideProps() {
+  const home = await Client().query(
+    Prismic.Predicates.at("document.type", "home")
+  );
+  return {
+    props: {
+      home,
+    },
+  };
+}
+import { Client } from "../prismic-configuration";
+import Prismic from "prismic-javascript";
