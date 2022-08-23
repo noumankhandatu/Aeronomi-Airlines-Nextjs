@@ -1,32 +1,16 @@
 import React from "react";
-// Import TestimonialsData
 import { TestimonialsData } from "../Testimonial/TestimonialData";
-// Import ClientLogos
 import ClientLogos from "../Testimonial/Client_Logo";
-// import Section Heading
 import SectionHeading from "../../Common/SectionHeading";
-//  OwlCarousel Slider Import
-import "owl.carousel/dist/assets/owl.carousel.css";
-import "owl.carousel/dist/assets/owl.theme.default.css";
-import dynamic from "next/dynamic";
-const OwlCarousel = dynamic(() => import("react-owl-carousel"), {
-  ssr: false,
-});
+import Carousel from "react-elastic-carousel";
+
 const Testimonials = () => {
-  let responsive = {
-    0: {
-      items: 1,
-    },
-    600: {
-      items: 1,
-    },
-    960: {
-      items: 1,
-    },
-    1200: {
-      items: 2,
-    },
-  };
+  const breakPoints = [
+    { width: 1, itemsToShow: 1 },
+    { width: 550, itemsToShow: 2, itemsToScroll: 2 },
+    { width: 768, itemsToShow: 3 },
+    { width: 1200, itemsToShow: 3 },
+  ];
 
   return (
     <>
@@ -40,15 +24,12 @@ const Testimonials = () => {
           <div className="row">
             <div className="col-lg-12">
               <div className="client_sliders_wrappers">
-                <OwlCarousel
-                  className="owl-theme"
-                  margin={30}
-                  responsive={responsive}
-                  autoplay={true}
-                  dots={false}
-                  nav={true}
-                  autoplayHoverPause={true}
-                  autoplayTimeout={2500}
+                <Carousel
+                  itemPadding={[5]}
+                  enableAutoPlay={true}
+                  autoPlaySpeed={2000}
+                  showArrows={false}
+                  breakPoints={breakPoints}
                 >
                   {TestimonialsData.map((data, index) => (
                     <div className="client_items" key={index}>
@@ -74,7 +55,7 @@ const Testimonials = () => {
                       </div>
                     </div>
                   ))}
-                </OwlCarousel>
+                </Carousel>
               </div>
               <div className="review_button">
                 <a href="#!" className="btn btn-theme">

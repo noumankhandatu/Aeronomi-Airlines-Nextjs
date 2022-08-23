@@ -2,31 +2,17 @@ import React, { useState } from "react";
 import LogisticsCard from "./LogisticsCard";
 import { LogisticsData } from "./Logistics_Data";
 import SectionHeading from "../../Common/SectionHeading";
-import "owl.carousel/dist/assets/owl.carousel.css";
-import "owl.carousel/dist/assets/owl.theme.default.css";
-import dynamic from "next/dynamic";
+import Carousel from "react-elastic-carousel";
 
-const OwlCarousel = dynamic(() => import("react-owl-carousel"), {
-  ssr: false,
-});
 const LogisticsService = () => {
   const [sliderIndex, setSliderIndex] = useState(0);
 
-  let responsive = {
-    0: {
-      items: 1,
-    },
-    600: {
-      items: 1,
-    },
-    960: {
-      items: 2,
-    },
-    1200: {
-      items: 3,
-    },
-  };
-
+  const breakPoints = [
+    { width: 1, itemsToShow: 1 },
+    { width: 550, itemsToShow: 2, itemsToScroll: 2 },
+    { width: 768, itemsToShow: 3 },
+    { width: 1200, itemsToShow: 4 },
+  ];
   return (
     <>
       <section id="logistics_area">
@@ -69,39 +55,33 @@ const LogisticsService = () => {
                 </div>
                 <div className="logistics_area_slider">
                   {sliderIndex === 0 && (
-                    <OwlCarousel
-                      className="owl-theme"
-                      responsive={responsive}
-                      autoplay={true}
-                      autoplayHoverPause={true}
-                      autoplayTimeout={2500}
-                      loop={true}
-                      margin={10}
-                      nav={true}
-                      dots={false}
-                    >
-                      {LogisticsData[0].map((data, index) => (
-                        <LogisticsCard
-                          img={data.img}
-                          heading={data.heading}
-                          para={data.para}
-                          key={index}
-                        />
-                      ))}
-                    </OwlCarousel>
+                    <div className="carousel-wrapper">
+                      <Carousel
+                        itemPadding={[5]}
+                        enableAutoPlay={true}
+                        autoPlaySpeed={2000}
+                        showArrows={false}
+                        breakPoints={breakPoints}
+                      >
+                        {LogisticsData[0].map((data, index) => (
+                          <LogisticsCard
+                            img={data.img}
+                            heading={data.heading}
+                            para={data.para}
+                            key={index}
+                          />
+                        ))}
+                      </Carousel>
+                    </div>
                   )}
 
                   {sliderIndex === 1 && (
-                    <OwlCarousel
-                      className="owl-theme"
-                      responsive={responsive}
-                      autoplay={true}
-                      autoplayHoverPause={true}
-                      autoplayTimeout={2500}
-                      loop={true}
-                      margin={10}
-                      nav={true}
-                      dots={false}
+                    <Carousel
+                      itemPadding={[5]}
+                      enableAutoPlay={true}
+                      autoPlaySpeed={2000}
+                      showArrows={false}
+                      breakPoints={breakPoints}
                     >
                       {LogisticsData[1].map((data, index) => (
                         <LogisticsCard
@@ -111,20 +91,16 @@ const LogisticsService = () => {
                           key={index}
                         />
                       ))}
-                    </OwlCarousel>
+                    </Carousel>
                   )}
 
                   {sliderIndex === 2 && (
-                    <OwlCarousel
-                      className="owl-theme"
-                      responsive={responsive}
-                      autoplay={true}
-                      autoplayHoverPause={true}
-                      autoplayTimeout={2500}
-                      loop={true}
-                      margin={10}
-                      nav={true}
-                      dots={false}
+                    <Carousel
+                      itemPadding={[5]}
+                      enableAutoPlay={true}
+                      autoPlaySpeed={2000}
+                      showArrows={false}
+                      breakPoints={breakPoints}
                     >
                       {LogisticsData[2].map((data, index) => (
                         <LogisticsCard
@@ -134,7 +110,7 @@ const LogisticsService = () => {
                           key={index}
                         />
                       ))}
-                    </OwlCarousel>
+                    </Carousel>
                   )}
                 </div>
               </div>

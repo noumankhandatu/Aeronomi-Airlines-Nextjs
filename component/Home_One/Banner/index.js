@@ -1,115 +1,100 @@
 import React from "react";
 import Link from "next/link";
-
-import dynamic from "next/dynamic";
-const OwlCarousel = dynamic(() => import("react-owl-carousel"), {
-  ssr: false,
-});
-import "owl.carousel/dist/assets/owl.carousel.css";
-import "owl.carousel/dist/assets/owl.theme.default.css";
+import Carousel from "react-elastic-carousel";
 
 const HomeBanner = () => {
-  let responsive = {
-    0: {
-      items: 1,
-    },
-    600: {
-      items: 1,
-    },
-    960: {
-      items: 1,
-    },
-    1200: {
-      items: 1,
-    },
-  };
+  const breakPoints = [
+    { width: 1, itemsToShow: 1 },
+    { width: 550, itemsToShow: 1, itemsToScroll: 1 },
+    { width: 768, itemsToShow: 1 },
+    { width: 1200, itemsToShow: 1 },
+  ];
   return (
     <div>
       <section id="homeOne_banner">
         <div className="banner-slider">
-          <OwlCarousel
-            className="owl-theme"
-            responsive={responsive}
-            autoplay={true}
-            autoplayHoverPause={true}
-            autoplayTimeout={2500}
-            loop={true}
-            nav={false}
-            dots={true}
-          >
-            <div className="banner-item banner-img-one">
-              <div className="container">
-                <div className="banner_one_inner">
-                  <div className="row">
-                    <div className="col-lg-8 col-md-12 col-sm-12 col-12">
-                      <div className="banner-text">
-                        <h1>
-                          Shipping Products <br />
-                          Worldwide
-                        </h1>
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit, sed do eiusmod tempor incididunt ut labore et
-                          dolore magna aliqua quis ipsum suspendisse.
-                        </p>
-                        <Link className="btn btn-theme" href="/request_quote">
-                          Get A Quote
-                        </Link>
+          <div className="carousel-wrapper">
+            <Carousel
+              itemPadding={[5]}
+              enableAutoPlay={true}
+              autoPlaySpeed={2000}
+              showArrows={false}
+              breakPoints={breakPoints}
+            >
+              <div className="banner-item banner-img-one">
+                <div className="container">
+                  <div className="banner_one_inner">
+                    <div className="row">
+                      <div className="col-lg-8 col-md-12 col-sm-12 col-12">
+                        <div className="banner-text">
+                          <h1>
+                            Shipping Products <br />
+                            Worldwide
+                          </h1>
+                          <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit, sed do eiusmod tempor incididunt ut labore et
+                            dolore magna aliqua quis ipsum suspendisse.
+                          </p>
+                          <Link className="btn btn-theme" href="/request_quote">
+                            Get A Quote
+                          </Link>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="banner-item banner-img-two">
-              <div className="container">
-                <div className="banner_one_inner">
-                  <div className="row">
-                    <div className="col-lg-8 col-md-12 col-sm-12 col-12">
-                      <div className="banner-text">
-                        <h1>
-                          Shipping Products <br />
-                          Worldwide
-                        </h1>
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit, sed do eiusmod tempor incididunt ut labore et
-                          dolore magna aliqua quis ipsum suspendisse.
-                        </p>
-                        <Link className="btn btn-theme" href="/request_quote">
-                          Get A Quote
-                        </Link>
+              <div className="banner-item banner-img-two">
+                <div className="container">
+                  <div className="banner_one_inner">
+                    <div className="row">
+                      <div className="col-lg-8 col-md-12 col-sm-12 col-12">
+                        <div className="banner-text">
+                          <h1>
+                            Shipping Products <br />
+                            Worldwide
+                          </h1>
+                          <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit, sed do eiusmod tempor incididunt ut labore et
+                            dolore magna aliqua quis ipsum suspendisse.
+                          </p>
+                          <Link className="btn btn-theme" href="/request_quote">
+                            Get A Quote
+                          </Link>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="banner-item banner-img-three">
-              <div className="container">
-                <div className="banner_one_inner">
-                  <div className="row">
-                    <div className="col-lg-8 col-md-12 col-sm-12 col-12">
-                      <div className="banner-text">
-                        <h1>
-                          Shipping Products <br />
-                          Worldwide
-                        </h1>
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit, sed do eiusmod tempor incididunt ut labore et
-                          dolore magna aliqua quis ipsum suspendisse.
-                        </p>
-                        <Link className="btn btn-theme" href="/request_quote">
-                          Get A Quote
-                        </Link>
+              <div className="banner-item banner-img-three">
+                <div className="container">
+                  <div className="banner_one_inner">
+                    <div className="row">
+                      <div className="col-lg-8 col-md-12 col-sm-12 col-12">
+                        <div className="banner-text">
+                          <h1>
+                            Shipping Products <br />
+                            Worldwide
+                          </h1>
+                          <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit, sed do eiusmod tempor incididunt ut labore et
+                            dolore magna aliqua quis ipsum suspendisse.
+                          </p>
+                          <Link className="btn btn-theme" href="/request_quote">
+                            Get A Quote
+                          </Link>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </OwlCarousel>
+            </Carousel>
+          </div>
         </div>
         <div className="banner_social_icon">
           <ul>

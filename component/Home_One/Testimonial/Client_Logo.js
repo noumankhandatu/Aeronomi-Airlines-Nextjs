@@ -1,28 +1,14 @@
 import React from "react";
-// Import ClientLogo
 import { ClientLogo } from "./TestimonialData";
-//  OwlCarousel Slider Import
-import "owl.carousel/dist/assets/owl.carousel.css";
-import "owl.carousel/dist/assets/owl.theme.default.css";
-import dynamic from "next/dynamic";
-const OwlCarousel = dynamic(() => import("react-owl-carousel"), {
-  ssr: false,
-});
+import Carousel from "react-elastic-carousel";
+
 const ClientLogos = () => {
-  let responsiveOne = {
-    0: {
-      items: 2,
-    },
-    600: {
-      items: 3,
-    },
-    960: {
-      items: 4,
-    },
-    1200: {
-      items: 5,
-    },
-  };
+  const breakPoints = [
+    { width: 1, itemsToShow: 1 },
+    { width: 550, itemsToShow: 2, itemsToScroll: 2 },
+    { width: 768, itemsToShow: 3 },
+    { width: 1200, itemsToShow: 5 },
+  ];
   return (
     <>
       <div id="client_logo_area">
@@ -30,20 +16,19 @@ const ClientLogos = () => {
           <div className="row">
             <div className="col-lg-12">
               <div className="client_logo_slider">
-                <OwlCarousel
-                  margin={10}
-                  responsive={responsiveOne}
-                  loop={true}
-                  autoplay={true}
-                  autoplayHoverPause={true}
-                  autoplayTimeout={2500}
+                <Carousel
+                  itemPadding={[5]}
+                  enableAutoPlay={true}
+                  autoPlaySpeed={2000}
+                  showArrows={false}
+                  breakPoints={breakPoints}
                 >
                   {ClientLogo.map((data, index) => (
                     <a href="#!" key={index}>
                       <img src={data.img} alt="logo img" />
                     </a>
                   ))}
-                </OwlCarousel>
+                </Carousel>
               </div>
             </div>
           </div>

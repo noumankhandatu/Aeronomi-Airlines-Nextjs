@@ -1,21 +1,25 @@
 import Carousel from "react-elastic-carousel";
+
+
 const breakPoints = [
   { width: 1, itemsToShow: 1 },
   { width: 550, itemsToShow: 2, itemsToScroll: 2 },
   { width: 768, itemsToShow: 3 },
   { width: 1200, itemsToShow: 4 },
 ];
-  <div className="carousel-wrapper">
-        <Carousel  itemPadding={[5]}
-                  enableAutoPlay={true}
-                  autoPlaySpeed={2000}
-                  showArrows={false}
-                  breakPoints={breakPoints}>
-          {items.map((item) => (
-            <h1 key={item}>{item}</h1>
-          ))}
-        </Carousel>
-      </div>
+
+<Carousel
+        itemPadding={[5]}
+        enableAutoPlay={true}
+        autoPlaySpeed={2000}
+        showArrows={false}
+        breakPoints={breakPoints}
+      >
+        ...
+</Carousel>
+
+
+
 
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).

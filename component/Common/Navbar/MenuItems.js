@@ -5,10 +5,10 @@ const MenuItems = (props) => {
   return (
     <>
       <li className="nav-item">
-        <a href={props.item.href} className="nav-link">
+        <div href={props.item.href} className="nav-link">
           {props.item.name}
           {props.item.has_children && <i className="fas fa-angle-down"></i>}
-        </a>
+        </div>
         {/* <Link href={props.item.href} className="nav-link">
           {props.item.name}
           {props.item.has_children && <i className="fas fa-angle-down"></i>}
