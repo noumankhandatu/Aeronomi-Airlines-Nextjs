@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Carousel from "react-elastic-carousel";
-import Prismic from "prismic-javascript";
-import { Client } from "../../../prismic-configuration";
+import * as prismic from "@prismicio/client";
+import sm from "../../../sm.json";
+
 const HomeBanner = () => {
   const breakPoints = [
     { width: 1, itemsToShow: 1 },
@@ -13,10 +14,22 @@ const HomeBanner = () => {
 
   const [toggleFn, setToggleFn] = useState(true);
   const [fetchData, setFetchData] = useState("");
-  async function getServerSideProps() {
-    const home = await Client().query(
-      Prismic.Predicates.at("document.type", "home")
-    );
+
+  // async function getServerSideProps() {
+  //   const home = await Client().query(
+  //     Prismic.Predicates.at("document.type", "home")
+  //   );
+  //   setFetchData(home);
+  //   return {
+  //     props: {
+  //       home,
+  //     },
+  //   };
+  // }
+
+  async function getStaticProps() {
+    const client = prismic.createClient(sm.apiEndpoint);
+    const home = await client.getByUID("home", "id-is-home");
     setFetchData(home);
     return {
       props: {
@@ -24,54 +37,55 @@ const HomeBanner = () => {
       },
     };
   }
+
   if (toggleFn) {
-    getServerSideProps();
+    getStaticProps();
     setToggleFn(!toggleFn);
   }
-  const mapper = fetchData?.results?.map((items) => {
-    return items?.data?.body[0]?.items;
+
+  const mapper = fetchData?.data?.body?.map((data) => {
+    return data?.items;
   });
   const firstCaroBtnText = mapper?.map((items) => {
-    return items[0].buttontext;
+    return items[0]?.buttontext;
   });
-
   const firstCaroImageOne = mapper?.map((items) => {
-    return items[0].image1.url;
+    return items[0]?.image1?.url;
   });
   const firstCaroBtnDes = mapper?.map((items) => {
-    return items[0].description;
+    return items[0]?.description;
   });
   const firstCaroBtnTitle = mapper?.map((items) => {
-    return items[0].title1;
+    return items[0]?.title1;
   });
 
   const SecondCaroImageOne = mapper?.map((items) => {
-    return items[1].image1.url;
+    return items[1]?.image1?.url;
   });
   const SecondCaroBtnText = mapper?.map((items) => {
-    return items[1].buttontext;
+    return items[1]?.buttontext;
   });
   const SecondCaroDes = mapper?.map((items) => {
-    return items[1].description;
+    return items[1]?.description;
   });
   const SecondCaroTitle = mapper?.map((items) => {
-    return items[1].title1;
+    return items[1]?.title1;
   });
 
   const ThirdCaroImageOne = mapper?.map((items) => {
-    return items[2].image1.url;
+    return items[2]?.image1?.url;
   });
   const ThirdCaroBtnText = mapper?.map((items) => {
-    return items[2].buttontext;
+    return items[2]?.buttontext;
   });
   const ThirdCaroDes = mapper?.map((items) => {
-    return items[2].description;
+    return items[2]?.description;
   });
   const ThirdCaroTitle = mapper?.map((items) => {
-    return items[2].title1;
+    return items[2]?.title1;
   });
   useEffect(() => {
-    getServerSideProps();
+    getStaticProps();
   }, []);
   return (
     <div>
@@ -198,3 +212,9 @@ const HomeBanner = () => {
 };
 
 export default HomeBanner;
+// const mapper = fetchData?.data?.map((items) => {
+//   return items?.data?.body[0]?.items;
+// });
+// const firstCaroBtnText = mapper?.map((items) => {
+//   return items[0].buttontext;
+// });

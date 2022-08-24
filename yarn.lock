@@ -1596,13 +1596,13 @@
   "resolved" "https://registry.npmjs.org/@popperjs/core/-/core-2.11.6.tgz"
   "version" "2.11.6"
 
-"@prismicio/client@^6.0.0", "@prismicio/client@^6.4.3", "@prismicio/client@^6.6.4":
-  "integrity" "sha512-5Mx8yCWN0ZoG8BwvBSCGsOhwCwSdyyCp1VOxOOb9gB+i+POT7xeZABJOdwtSwE1/Cyy7Bvpr8w1b0ItrSc0rmw=="
-  "resolved" "https://registry.npmjs.org/@prismicio/client/-/client-6.6.4.tgz"
-  "version" "6.6.4"
+"@prismicio/client@^6.0.0", "@prismicio/client@^6.4.3", "@prismicio/client@^6.7.0":
+  "integrity" "sha512-ErBVCpBdjUWX0Bf22eogxnM+ljfZN0uoEOONiWs7y8scDA4fcc0ydXSTbpp+W/A3MCgDUI2J07DkxRrp2c5/Zw=="
+  "resolved" "https://registry.npmjs.org/@prismicio/client/-/client-6.7.0.tgz"
+  "version" "6.7.0"
   dependencies:
     "@prismicio/helpers" "^2.3.3"
-    "@prismicio/types" "^0.2.1"
+    "@prismicio/types" "^0.2.3"
 
 "@prismicio/helpers@^2.3.0", "@prismicio/helpers@^2.3.1", "@prismicio/helpers@^2.3.3":
   "integrity" "sha512-P3oYJnBeJPz/ClUBUewbE+ak73gs5JVL+C1G6TfgN5G5j0MYkwMluZXBqbC3yDTx8jxNeQUADyI8V05cl0Jdgw=="
@@ -1626,10 +1626,10 @@
     "eslint-plugin-react" "^7.30.0"
     "eslint-plugin-react-hooks" "^4.5.0"
 
-"@prismicio/react@^2.4.0", "@prismicio/react@^2.4.4":
-  "integrity" "sha512-tF3YNGRF32qxjY2H6uRfgvV2R467puMeWIEoquzvQvy4tsjy5ERex54hMMr0GsMaymzNQZbx65Usu8/yGfIG5Q=="
-  "resolved" "https://registry.npmjs.org/@prismicio/react/-/react-2.4.4.tgz"
-  "version" "2.4.4"
+"@prismicio/react@^2.4.0", "@prismicio/react@^2.5.0":
+  "integrity" "sha512-1EYdvoU2bpVEkmVDDVyTUK22C580tTWR96HJ9PMUex0oGeJLBAMKiRinyachN42r1uCH5nRAH54A90ZtBjjZhw=="
+  "resolved" "https://registry.npmjs.org/@prismicio/react/-/react-2.5.0.tgz"
+  "version" "2.5.0"
   dependencies:
     "@prismicio/helpers" "^2.3.1"
     "@prismicio/richtext" "^2.0.1"
@@ -1646,10 +1646,10 @@
   "resolved" "https://registry.npmjs.org/@prismicio/types/-/types-0.1.29.tgz"
   "version" "0.1.29"
 
-"@prismicio/types@^0.2.0", "@prismicio/types@^0.2.1":
-  "integrity" "sha512-LINqeYOuW26oEZzuEdR5HAdoN/h0lWDloGJ/Ip9MO75IYPBTq/drnuuFT7qZbrbp4KIEAxAZgQxou5L1rtMPyA=="
-  "resolved" "https://registry.npmjs.org/@prismicio/types/-/types-0.2.2.tgz"
-  "version" "0.2.2"
+"@prismicio/types@^0.2.0", "@prismicio/types@^0.2.1", "@prismicio/types@^0.2.3":
+  "integrity" "sha512-mHsZ9ora8He6PAn+Q/0MCVdlfc0Xv8rSEYJyfwywDApuvssGvgUbeHE6XTqPhK2dJwb0mAkJzCpZiQJRt9+bvw=="
+  "resolved" "https://registry.npmjs.org/@prismicio/types/-/types-0.2.3.tgz"
+  "version" "0.2.3"
 
 "@react-google-maps/api@^2.1.0":
   "integrity" "sha512-XvZWUkRa0JSvtkyV8UgDkuccPuhvjr/E6WQZK/662H2MAiZ6qFDPc0g7E87GJmEftr9Q5SKLsDzlaZ6jx65RVg=="

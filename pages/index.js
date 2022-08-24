@@ -1,7 +1,7 @@
 import Head from "next/head";
 import LandingPage from "./home";
 
-export default function Home() {
+export default function Home({ page }) {
   return (
     <div>
       <Head>
@@ -39,3 +39,13 @@ export default function Home() {
     </div>
   );
 }
+
+// export async function getStaticProps() {
+//   const client = prismic.createClient(sm.apiEndpoint);
+//   const page = await client.getByUID("home", "id-is-home");
+//   return {
+//     props: {
+//       page,
+//     },
+//   };
+// }
