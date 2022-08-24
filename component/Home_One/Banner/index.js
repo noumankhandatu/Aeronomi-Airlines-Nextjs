@@ -15,18 +15,6 @@ const HomeBanner = () => {
   const [toggleFn, setToggleFn] = useState(true);
   const [fetchData, setFetchData] = useState("");
 
-  // async function getServerSideProps() {
-  //   const home = await Client().query(
-  //     Prismic.Predicates.at("document.type", "home")
-  //   );
-  //   setFetchData(home);
-  //   return {
-  //     props: {
-  //       home,
-  //     },
-  //   };
-  // }
-
   async function getStaticProps() {
     const client = prismic.createClient(sm.apiEndpoint);
     const home = await client.getByUID("home", "id-is-home");
@@ -47,10 +35,10 @@ const HomeBanner = () => {
     return data?.items;
   });
   const firstCaroBtnText = mapper?.map((items) => {
-    return items[0]?.buttontext;
+    return items[0]?.helpmebtn;
   });
   const firstCaroImageOne = mapper?.map((items) => {
-    return items[0]?.image1?.url;
+    return items[0]?.imagecaro?.url;
   });
   const firstCaroBtnDes = mapper?.map((items) => {
     return items[0]?.description;
@@ -60,10 +48,10 @@ const HomeBanner = () => {
   });
 
   const SecondCaroImageOne = mapper?.map((items) => {
-    return items[1]?.image1?.url;
+    return items[1]?.imagecaro?.url;
   });
   const SecondCaroBtnText = mapper?.map((items) => {
-    return items[1]?.buttontext;
+    return items[1]?.helpmebtn;
   });
   const SecondCaroDes = mapper?.map((items) => {
     return items[1]?.description;
@@ -73,10 +61,10 @@ const HomeBanner = () => {
   });
 
   const ThirdCaroImageOne = mapper?.map((items) => {
-    return items[2]?.image1?.url;
+    return items[2]?.imagecaro?.url;
   });
   const ThirdCaroBtnText = mapper?.map((items) => {
-    return items[2]?.buttontext;
+    return items[2]?.helpmebtn;
   });
   const ThirdCaroDes = mapper?.map((items) => {
     return items[2]?.description;
