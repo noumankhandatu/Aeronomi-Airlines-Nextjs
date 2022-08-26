@@ -1,10 +1,13 @@
 import React from "react";
-import Link from "next/link"; //import this
+import Link from "next/link";
 // CommonBanner Area
 const CommonBanner = (props) => {
   return (
     <>
-      <section id="inner_area_banner">
+      <section
+        id="inner_area_banner"
+        style={{ backgroundImage: `url(${props.image})` }}
+      >
         <div className="container">
           <div className="row">
             <div className="col-lg-12">

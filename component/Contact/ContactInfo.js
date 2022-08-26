@@ -1,26 +1,33 @@
-import React from 'react'
-//ContactInfo Area
-const ContactInfo = () => {
-    return (
-        <>
-            <div className="contact_info_wrapper">
-                <div className="contact_item">
-                    <h5>Our Address</h5>
-                    <p>6th floor, anthina Barbosa Sidney</p>
-                </div>
-                <div className="contact_item">
-                    <h5>Call us on</h5>
-                    <p>Office: +44 567 890123 & +44 123 456789</p>
-                    <p>Customer Care: 1800-123-45-6789</p>
-                </div>
-                <div className="contact_item">
-                    <h5>Mail Us at</h5>
-                    <p>Mailus@demo.com</p>
-                    <p>Wesupportyou@demo.com</p>
-                </div>
-            </div>
-        </>
-    )
-}
+import React from "react";
+const ContactInfo = ({ contact }) => {
+  const labeladdress = contact.data.labeladdress;
+  const address = contact.data.address;
+  const call = contact.data.call;
+  const phonenumber = contact.data.phonenumber;
+  const customercare = contact.data.customercare;
+  const mail = contact.data.mail;
+  const mailcom = contact.data.mailcom;
+  const yahoo = contact.data.yahoo;
+  return (
+    <>
+      <div className="contact_info_wrapper">
+        <div className="contact_item">
+          <h5>{labeladdress ? labeladdress : `pending`}</h5>
+          <p>{address ? address : `pending`}</p>
+        </div>
+        <div className="contact_item">
+          <h5>{call ? call : `pending`}</h5>
+          <p>{phonenumber ? phonenumber : `pending`}</p>
+          <p>{customercare ? customercare : `pending`}</p>
+        </div>
+        <div className="contact_item">
+          <h5>{mail ? mail : `pending`}</h5>
+          <p>{mailcom ? mailcom : `pending`}</p>
+          <p>{yahoo ? yahoo : `pending`}</p>
+        </div>
+      </div>
+    </>
+  );
+};
 
-export default ContactInfo
+export default ContactInfo;

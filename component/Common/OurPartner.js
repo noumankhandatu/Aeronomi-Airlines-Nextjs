@@ -1,27 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Carousel from "react-elastic-carousel";
-
-const OurPartnerData = [
-  {
-    img: "https://images.prismic.io/aeronomi-airlines-ltd/1ff875a2-3c06-4620-8bef-f0a7f7561ad8_download+%283%29.png?auto=compress,format",
-  },
-  {
-    img: "https://images.prismic.io/aeronomi-airlines-ltd/1ff875a2-3c06-4620-8bef-f0a7f7561ad8_download+%283%29.png?auto=compress,format",
-  },
-  {
-    img: "https://images.prismic.io/aeronomi-airlines-ltd/1ff875a2-3c06-4620-8bef-f0a7f7561ad8_download+%283%29.png?auto=compress,format",
-  },
-  {
-    img: "https://images.prismic.io/aeronomi-airlines-ltd/1ff875a2-3c06-4620-8bef-f0a7f7561ad8_download+%283%29.png?auto=compress,format",
-  },
-  {
-    img: "https://images.prismic.io/aeronomi-airlines-ltd/1ff875a2-3c06-4620-8bef-f0a7f7561ad8_download+%283%29.png?auto=compress,format",
-  },
-  {
-    img: "https://images.prismic.io/aeronomi-airlines-ltd/1ff875a2-3c06-4620-8bef-f0a7f7561ad8_download+%283%29.png?auto=compress,format",
-  },
-];
-
+import Prismic from "prismic-javascript";
+import { Client } from "../../prismic-configuration";
 const OurPartner = () => {
   const breakPoints = [
     { width: 1, itemsToShow: 1 },
@@ -29,6 +9,62 @@ const OurPartner = () => {
     { width: 768, itemsToShow: 3 },
     { width: 1200, itemsToShow: 4 },
   ];
+
+  //alert=> this is fetched inside component cos it is called 23 times its better to call once inside component to send props 23 times page
+
+  const [toggleFn, setToggleFn] = useState(true);
+  const [fetchData, setFetchData] = useState("");
+  async function getServerSideProps() {
+    const about = await Client().query(
+      Prismic.Predicates.at("document.type", "about")
+    );
+    setFetchData(about);
+    return {
+      props: {
+        about,
+      },
+    };
+  }
+  if (toggleFn) {
+    getServerSideProps();
+    setToggleFn(!toggleFn);
+  }
+
+  const firstimage = fetchData?.results?.map((items) => {
+    return items.data.body[5].items[0].firstimage.url;
+  });
+  const secondimage = fetchData?.results?.map((items) => {
+    return items.data.body[5].items[0].secondimage.url;
+  });
+  const thirdimage = fetchData?.results?.map((items) => {
+    return items.data.body[5].items[0].thirdimage.url;
+  });
+  const fourthimage = fetchData?.results?.map((items) => {
+    return items.data.body[5].items[0].fourthimage.url;
+  });
+  const fifthimage = fetchData?.results?.map((items) => {
+    return items.data.body[5].items[0].fifthimage.url;
+  });
+  const OurPartnerData = [
+    {
+      img: firstimage ? firstimage : `pending`,
+    },
+    {
+      img: secondimage ? secondimage : `pending`,
+    },
+    {
+      img: thirdimage ? thirdimage : `pending`,
+    },
+    {
+      img: fourthimage ? fourthimage : `pending`,
+    },
+    {
+      img: fifthimage ? fifthimage : `pending`,
+    },
+  ];
+  useEffect(() => {
+    getServerSideProps();
+  }, []);
   return (
     <>
       <section id="partner_area_slider">
@@ -50,15 +86,11 @@ const OurPartner = () => {
                     showArrows={false}
                     breakPoints={breakPoints}
                   >
-                    {OurPartnerData.map((data, index) => {
-                      return (
-                        <div>
-                          <div className="partner_logo" key={index}>
-                            <img src={data.img} alt="logo-img" />
-                          </div>
-                        </div>
-                      );
-                    })}
+                    {OurPartnerData.map((data, index) => (
+                      <div className="partner_logo" key={index}>
+                        <img src={data.img} alt="logo-img" />
+                      </div>
+                    ))}
                   </Carousel>
                 </div>
               </div>
