@@ -1,41 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Maps from "../../Common/Map";
-import Prismic from "prismic-javascript";
-import { Client } from "../../../prismic-configuration";
-const MapArea = () => {
-  const [toggleFn, setToggleFn] = useState(true);
-  const [fetchData, setFetchData] = useState("");
-
-  async function getServerSideProps() {
-    const home = await Client().query(
-      Prismic.Predicates.at("document.type", "home")
-    );
-    setFetchData(home);
-    return {
-      props: {
-        home,
-      },
-    };
-  }
-  if (toggleFn) {
-    getServerSideProps();
-    setToggleFn(!toggleFn);
-  }
-
-  if (toggleFn) {
-    getServerSideProps();
-    setToggleFn(!toggleFn);
-  }
-  const mapheading = fetchData?.results?.map((items) => {
-    return items?.data?.mapheading;
-  });
-  const maptitle = fetchData?.results?.map((items) => {
-    return items?.data?.maptitle;
-  });
-  useEffect(() => {
-    getServerSideProps();
-  }, []);
-
+const MapArea = ({ mapArea }) => {
+  const mapheading = mapArea?.data?.mapheading;
+  const maptitle = mapArea?.data?.maptitle;
   return (
     <>
       <section id="maps_area">

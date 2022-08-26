@@ -1,73 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import OurAdvantageCard from "./Our_Advantage_Card";
 import Carousel from "react-elastic-carousel";
-import Prismic from "prismic-javascript";
-import { Client } from "../../../prismic-configuration";
-const OurAdvantage = () => {
-  const breakPoints = [
-    { width: 1, itemsToShow: 1 },
-    { width: 550, itemsToShow: 1, itemsToScroll: 2 },
-    { width: 768, itemsToShow: 1 },
-    { width: 1200, itemsToShow: 1 },
-  ];
-  const [toggleFn, setToggleFn] = useState(true);
-  const [fetchData, setFetchData] = useState("");
-  async function getServerSideProps() {
-    const home = await Client().query(
-      Prismic.Predicates.at("document.type", "home")
-    );
-    setFetchData(home);
-    return {
-      props: {
-        home,
-      },
-    };
-  }
-  if (toggleFn) {
-    getServerSideProps();
-    setToggleFn(!toggleFn);
-  }
-  const advimage = fetchData?.results?.map((items) => {
-    return items.data.advimage.url;
-  });
-
-  const advheading = fetchData?.results?.map((items) => {
-    return items.data.advheading;
-  });
-
-  const advlogoone = fetchData?.results?.map((items) => {
-    return items.data.advlogoone.url;
-  });
-
-  const advtitileone = fetchData?.results?.map((items) => {
-    return items.data.advtitileone;
-  });
-  const advdesone = fetchData?.results?.map((items) => {
-    return items.data.advdesone;
-  });
-
-  const advlogotwo = fetchData?.results?.map((items) => {
-    return items.data.advimagetwo.url;
-  });
-
-  const advtitiletwo = fetchData?.results?.map((items) => {
-    return items.data.advtitiletwo;
-  });
-  const advdestwo = fetchData?.results?.map((items) => {
-    return items.data.advdestwo;
-  });
-
-  const advlogothree = fetchData?.results?.map((items) => {
-    return items.data.advimagethree.url;
-  });
-
-  const advtitilethree = fetchData?.results?.map((items) => {
-    return items.data.advtitilethree;
-  });
-  const advdesthree = fetchData?.results?.map((items) => {
-    return items.data.advdesthree;
-  });
-
+const breakPoints = [
+  { width: 1, itemsToShow: 1 },
+  { width: 550, itemsToShow: 1, itemsToScroll: 2 },
+  { width: 768, itemsToShow: 1 },
+  { width: 1200, itemsToShow: 1 },
+];
+const OurAdvantage = ({ ourAdv }) => {
+  const advimage = ourAdv.data.advimage.url;
+  const advheading = ourAdv.data.advheading;
+  const advlogoone = ourAdv.data.advlogoone.url;
+  const advtitileone = ourAdv.data.advtitileone;
+  const advdesone = ourAdv.data.advdesone;
+  const advlogotwo = ourAdv.data.advimagetwo.url;
+  const advtitiletwo = ourAdv.data.advtitiletwo;
+  const advdestwo = ourAdv.data.advdestwo;
+  const advlogothree = ourAdv.data.advimagethree.url;
+  const advtitilethree = ourAdv.data.advtitilethree;
+  const advdesthree = ourAdv.data.advdesthree;
   const OurAdventagesData = [
     [
       {
@@ -122,9 +73,6 @@ const OurAdvantage = () => {
     ],
   ];
 
-  useEffect(() => {
-    getServerSideProps();
-  }, []);
   return (
     <>
       <section

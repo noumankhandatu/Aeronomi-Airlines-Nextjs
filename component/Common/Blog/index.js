@@ -1,121 +1,34 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import BlogCard from "./BlogCard";
 import SectionHeading from "../SectionHeading";
-import { Client } from "../../../prismic-configuration";
-import Prismic from "prismic-javascript";
-const BlogHome = () => {
-  const [toggleFn, setToggleFn] = useState(true);
-  const [fetchData, setFetchData] = useState("");
-  async function getServerSideProps() {
-    const home = await Client().query(
-      Prismic.Predicates.at("document.type", "home")
-    );
-    setFetchData(home);
-    return {
-      props: {
-        home,
-      },
-    };
-  }
-  if (toggleFn) {
-    getServerSideProps();
-    setToggleFn(!toggleFn);
-  }
-  const title = fetchData?.results?.map((items) => {
-    return items.data.body[8].items[0].title;
-  });
 
-  const description = fetchData?.results?.map((items) => {
-    return items.data.body[8].items[0].description;
-  });
-
-  const blogimage = fetchData?.results?.map((items) => {
-    return items.data.body[9].items[0].blogimage.url;
-  });
-
-  const blogheading = fetchData?.results?.map((items) => {
-    return items.data.body[9].items[0].blogheading;
-  });
-
-  const blogpara = fetchData?.results?.map((items) => {
-    return items.data.body[9].items[0].blogpara;
-  });
-
-  const blogname = fetchData?.results?.map((items) => {
-    return items.data.body[9].items[0].blogname;
-  });
-  const blogcomment = fetchData?.results?.map((items) => {
-    return items.data.body[9].items[0].blogcomment;
-  });
-
-  const blogdate = fetchData?.results?.map((items) => {
-    return items.data.body[9].items[0].blogdate;
-  });
-  const blogmonth = fetchData?.results?.map((items) => {
-    return items.data.body[9].items[0].blogmonth;
-  });
-  const blogday = fetchData?.results?.map((items) => {
-    return items.data.body[9].items[0].blogday;
-  });
-
-  const blogimages = fetchData?.results?.map((items) => {
-    return items.data.body[10].items[0].blogimage.url;
-  });
-
-  const blogheadings = fetchData?.results?.map((items) => {
-    return items.data.body[10].items[0].blogheading;
-  });
-
-  const blogparas = fetchData?.results?.map((items) => {
-    return items.data.body[10].items[0].blogpara;
-  });
-
-  const blognames = fetchData?.results?.map((items) => {
-    return items.data.body[10].items[0].blogname;
-  });
-  const blogcomments = fetchData?.results?.map((items) => {
-    return items.data.body[10].items[0].blogcomment;
-  });
-
-  const blogdates = fetchData?.results?.map((items) => {
-    return items.data.body[10].items[0].blogdate;
-  });
-  const blogmonths = fetchData?.results?.map((items) => {
-    return items.data.body[10].items[0].blogmonth;
-  });
-  const blogdays = fetchData?.results?.map((items) => {
-    return items.data.body[10].items[0].blogday;
-  });
-
-  const blogimaget = fetchData?.results?.map((items) => {
-    return items.data.body[11].items[0].blogimage.url;
-  });
-
-  const blogheadingt = fetchData?.results?.map((items) => {
-    return items.data.body[11].items[0].blogheading;
-  });
-
-  const blogparat = fetchData?.results?.map((items) => {
-    return items.data.body[11].items[0].blogpara;
-  });
-
-  const blognamet = fetchData?.results?.map((items) => {
-    return items.data.body[11].items[0].blogname;
-  });
-  const blogcommentt = fetchData?.results?.map((items) => {
-    return items.data.body[11].items[0].blogcomment;
-  });
-
-  const blogdatet = fetchData?.results?.map((items) => {
-    return items.data.body[11].items[0].blogdate;
-  });
-  const blogmontht = fetchData?.results?.map((items) => {
-    return items.data.body[11].items[0].blogmonth;
-  });
-  const blogdaytt = fetchData?.results?.map((items) => {
-    return items.data.body[11].items[0].blogday;
-  });
-
+const BlogHome = ({ blogData }) => {
+  const title = blogData.data.body[8].items[0].title;
+  const description = blogData.data.body[8].items[0].description;
+  const blogimage = blogData.data.body[9].items[0].blogimage.url;
+  const blogheading = blogData.data.body[9].items[0].blogheading;
+  const blogpara = blogData.data.body[9].items[0].blogpara;
+  const blogname = blogData.data.body[9].items[0].blogname;
+  const blogcomment = blogData.data.body[9].items[0].blogcomment;
+  const blogdate = blogData.data.body[9].items[0].blogdate;
+  const blogmonth = blogData.data.body[9].items[0].blogmonth;
+  const blogday = blogData.data.body[9].items[0].blogday;
+  const blogimages = blogData.data.body[10].items[0].blogimage.url;
+  const blogheadings = blogData.data.body[10].items[0].blogheading;
+  const blogparas = blogData.data.body[10].items[0].blogpara;
+  const blognames = blogData.data.body[10].items[0].blogname;
+  const blogcomments = blogData.data.body[10].items[0].blogcomment;
+  const blogdates = blogData.data.body[10].items[0].blogdate;
+  const blogmonths = blogData.data.body[10].items[0].blogmonth;
+  const blogdays = blogData.data.body[10].items[0].blogday;
+  const blogimaget = blogData.data.body[11].items[0].blogimage.url;
+  const blogheadingt = blogData.data.body[11].items[0].blogheading;
+  const blogparat = blogData.data.body[11].items[0].blogpara;
+  const blognamet = blogData.data.body[11].items[0].blogname;
+  const blogcommentt = blogData.data.body[11].items[0].blogcomment;
+  const blogdatet = blogData.data.body[11].items[0].blogdate;
+  const blogmontht = blogData.data.body[11].items[0].blogmonth;
+  const blogdaytt = blogData.data.body[11].items[0].blogday;
   const BlogData = [
     {
       img: blogimage,
@@ -148,10 +61,6 @@ const BlogHome = () => {
       day: blogdaytt,
     },
   ];
-
-  useEffect(() => {
-    getServerSideProps();
-  }, []);
 
   return (
     <>

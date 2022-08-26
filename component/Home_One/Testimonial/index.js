@@ -1,51 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import ClientLogos from "../Testimonial/Client_Logo";
 import SectionHeading from "../../Common/SectionHeading";
 import Carousel from "react-elastic-carousel";
-import Prismic from "prismic-javascript";
-import { Client } from "../../../prismic-configuration";
-const Testimonials = () => {
-  const breakPoints = [
-    { width: 1, itemsToShow: 1 },
-    { width: 550, itemsToShow: 2, itemsToScroll: 2 },
-    { width: 768, itemsToShow: 3 },
-    { width: 1200, itemsToShow: 3 },
-  ];
-  const [toggleFn, setToggleFn] = useState(true);
-  const [fetchData, setFetchData] = useState("");
-  async function getServerSideProps() {
-    const home = await Client().query(
-      Prismic.Predicates.at("document.type", "home")
-    );
-    setFetchData(home);
-    return {
-      props: {
-        home,
-      },
-    };
-  }
-  if (toggleFn) {
-    getServerSideProps();
-    setToggleFn(!toggleFn);
-  }
-  const RealData = fetchData?.results?.map((items) => {
-    return items.data.body[4].items;
-  });
-  const title = fetchData?.results?.map((items) => {
-    return items.data.body[3].items[0].title;
-  });
-  const description = fetchData?.results?.map((items) => {
-    return items.data.body[3].items[0].description;
-  });
-  const testimonialbg = fetchData?.results?.map((items) => {
-    return items?.data?.testimonialbg.url;
-  });
-  const testimonialbutton = fetchData?.results?.map((items) => {
-    return items?.data?.testimonialbutton;
-  });
-  useEffect(() => {
-    getServerSideProps();
-  }, []);
+
+const breakPoints = [
+  { width: 1, itemsToShow: 1 },
+  { width: 550, itemsToShow: 2, itemsToScroll: 2 },
+  { width: 768, itemsToShow: 3 },
+  { width: 1200, itemsToShow: 3 },
+];
+const Testimonials = ({ testi }) => {
+  const RealData = testi.data.body[4].items;
+  const title = testi.data.body[3].items[0].title;
+  const description = testi.data.body[3].items[0].description;
+  const testimonialbg = testi?.data?.testimonialbg.url;
+  const testimonialbutton = testi?.data?.testimonialbutton;
+
   return (
     <>
       <section
@@ -67,7 +37,7 @@ const Testimonials = () => {
                   breakPoints={breakPoints}
                 >
                   {RealData &&
-                    RealData[0]?.map((data, index) => (
+                    RealData?.map((data, index) => (
                       <div className="client_items" key={index}>
                         <i className="fas fa-quote-right fa-3x"></i>
                         <div className="testimonial-box">

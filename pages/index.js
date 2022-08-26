@@ -33,13 +33,13 @@ export default function Home({ home }) {
         <HomeBanner homeData={home} />
         <GetSchedule getSchData={home} />
         <LogisticsService logData={home} />
-        <HomeAbout />
-        <OurAdvantage />
-        <MapArea />
-        <Testimonials />
-        <PricingTable />
-        <Subscribe />
-        <BlogHome />
+        <HomeAbout homeAbout={home} />
+        <OurAdvantage ourAdv={home} />
+        <MapArea mapArea={home} />
+        <Testimonials testi={home} />
+        <PricingTable priceData={home} />
+        <Subscribe subData={home} />
+        <BlogHome blogData={home} />
       </div>
       <script
         src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

@@ -1,41 +1,9 @@
-import React, { useState, useEffect } from "react";
-import Prismic from "prismic-javascript";
-import { Client } from "../../prismic-configuration";
-const Subscribe = () => {
-  const [toggleFn, setToggleFn] = useState(true);
-  const [fetchData, setFetchData] = useState("");
-  async function getServerSideProps() {
-    const home = await Client().query(
-      Prismic.Predicates.at("document.type", "home")
-    );
-    setFetchData(home);
-    return {
-      props: {
-        home,
-      },
-    };
-  }
-  if (toggleFn) {
-    getServerSideProps();
-    setToggleFn(!toggleFn);
-  }
-
-  const subbgimage = fetchData?.results?.map((items) => {
-    return items.data.subbgimage.url;
-  });
-  const subimage = fetchData?.results?.map((items) => {
-    return items.data.subimage.url;
-  });
-  const subbtntext = fetchData?.results?.map((items) => {
-    return items.data.subbtntext;
-  });
-  const subtitle = fetchData?.results?.map((items) => {
-    return items.data.subtitle;
-  });
-  useEffect(() => {
-    getServerSideProps();
-  }, []);
-
+import React from "react";
+const Subscribe = ({ subData }) => {
+  const subbgimage = subData.data.subbgimage.url;
+  const subimage = subData.data.subimage.url;
+  const subbtntext = subData.data.subbtntext;
+  const subtitle = subData.data.subtitle;
   return (
     <>
       <section
@@ -52,7 +20,7 @@ const Subscribe = () => {
             <div className="col-lg-8 col-md-12 col-sm-12 col-12">
               <div className="subscribe-area-inner">
                 <div className="heading-left-border">
-                  <h2>{subtitle }</h2>
+                  <h2>{subtitle}</h2>
                 </div>
                 <div className="input-group">
                   <input

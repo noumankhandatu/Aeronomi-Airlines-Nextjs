@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Counter from "./Counter";
-import Prismic from "prismic-javascript";
-import { Client } from "../../../prismic-configuration";
 
 const CounterData = [
   {
@@ -24,46 +22,21 @@ const CounterData = [
   },
 ];
 
-const HomeAbout = () => {
-  const [toggleFn, setToggleFn] = useState(true);
-  const [fetchData, setFetchData] = useState("");
-  async function getServerSideProps() {
-    const home = await Client().query(
-      Prismic.Predicates.at("document.type", "home")
-    );
-    setFetchData(home);
-    return {
-      props: {
-        home,
-      },
-    };
-  }
-  if (toggleFn) {
-    getServerSideProps();
-    setToggleFn(!toggleFn);
-  }
+const HomeAbout = ({ homeAbout }) => {
+  const countrytext = homeAbout.data.countrytext;
+  const companytext = homeAbout.data.companytext;
+  const portstext = homeAbout.data.portstext;
+  const countrycounter = homeAbout?.data?.countrycounter;
+  const companycounter = homeAbout?.data?.companycounter1;
+  const portscounter1 = homeAbout.data.portscounter1;
+  const globalimage = homeAbout.data.globalimage.url;
+  const globaltext = homeAbout.data.globaltext;
+  const allourefforts = homeAbout.data.allourefforts;
+  const Solving = homeAbout.data.Solving;
+  const Jonathon = homeAbout.data.Jonathon;
+  const Chairman = homeAbout.data.Chairman;
+  const signatureimage = homeAbout.data.signatureimage.url;
 
-  const countrytext = fetchData?.results?.map((items) => {
-    return items.data.countrytext;
-  });
-
-  const companytext = fetchData?.results?.map((items) => {
-    return items.data.companytext;
-  });
-
-  const portstext = fetchData?.results?.map((items) => {
-    return items.data.portstext;
-  });
-
-  const countrycounter = fetchData?.results?.map((items) => {
-    return items?.data?.countrycounter;
-  });
-  const companycounter = fetchData?.results?.map((items) => {
-    return items?.data?.companycounter1;
-  });
-  const portscounter1 = fetchData?.results?.map((items) => {
-    return items.data.portscounter1;
-  });
   const CounterData = [
     {
       countStart: 0,
@@ -84,32 +57,6 @@ const HomeAbout = () => {
       icon: " fas fa-building",
     },
   ];
-
-  const globalimage = fetchData?.results?.map((items) => {
-    return items.data.globalimage.url;
-  });
-  const globaltext = fetchData?.results?.map((items) => {
-    return items.data.globaltext;
-  });
-  const allourefforts = fetchData?.results?.map((items) => {
-    return items.data.allourefforts;
-  });
-  const Solving = fetchData?.results?.map((items) => {
-    return items.data.Solving;
-  });
-  const Jonathon = fetchData?.results?.map((items) => {
-    return items.data.Jonathon;
-  });
-  const Chairman = fetchData?.results?.map((items) => {
-    return items.data.Chairman;
-  });
-  const signatureimage = fetchData?.results?.map((items) => {
-    return items.data.signatureimage.url;
-  });
-
-  useEffect(() => {
-    getServerSideProps();
-  }, []);
 
   return (
     <div>
