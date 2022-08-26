@@ -10,7 +10,6 @@ const Service = ({ services }) => {
   const bannerheading = services.data.body[0].items[0].bannerheading;
   const bannerpage = services.data.body[0].items[0].bannerpage;
   const bgimage = services.data.body[0].items[0].bgimage.url;
-
   return (
     <>
       <CommonBanner image={bgimage} heading={bannerheading} page={bannerpage} />

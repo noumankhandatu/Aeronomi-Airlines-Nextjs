@@ -8,7 +8,7 @@ const BlogCard = (props) => {
       <div className="blog_wrapper zoom">
         <div className="news-img">
           <Link href="/blog_details">
-            <img src={props.img} alt="img " />
+            <img src={props.img} alt="img" style={{ height: "320px" }} />
           </Link>
           <div className="date">
             <small>{props.month}</small>

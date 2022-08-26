@@ -1,11 +1,23 @@
 import React from "react";
-// Import All Blog Details Components
 import BlogSidebar from "../Common/BlogSidebar";
 import AllComment from "../BlogDetails/AllComment";
 import ReplayForm from "../BlogDetails/ReplayForm";
-// Import Blog Details Img
 
-const BlogDetailsArea = () => {
+const BlogDetailsArea = ({ blog }) => {
+  const image = blog?.data?.image.url;
+  const owner = blog?.data?.owner;
+  const date = blog?.data?.date;
+  const month = blog?.data?.month;
+  const label = blog?.data?.label;
+  const para = blog?.data?.para;
+  const blockquote = blog?.data?.blockquote;
+  const tag = blog?.data?.tag;
+  const tagone = blog?.data?.tagone;
+  const tagtwo = blog?.data?.tagtwo;
+  const tagthree = blog?.data?.tagthree;
+  const tagfour = blog?.data?.tagfour;
+  const tagfive = blog?.data?.tagfive;
+  const share = blog?.data?.share;
   return (
     <>
       <section id="blog_area_sidebar">
@@ -16,108 +28,75 @@ const BlogDetailsArea = () => {
                 <div className="blog_single_item">
                   <div className="blog_single_text_area">
                     <div className="blog_single_top_img">
-                      <img
-                        src={"https://picsum.photos/200/300"}
-                        alt="Details_Img"
-                      />
+                      <img src={image} alt="Details_Img" />
                     </div>
                     <div className="blog_single_viewer_area ">
                       <ul>
                         <li>
                           <a href="#!">
-                            <i className="far fa-user"></i> Hadayet Ali
+                            <i className="far fa-user"></i>
+                            {owner}
                           </a>
                         </li>
                         <li>
                           <a href="#!">
-                            <i className="far fa-clock"></i> March 22, 2018
+                            <i className="far fa-clock"></i>
+                            {date}
                           </a>
                         </li>
                         <li>
                           <a href="#!">
-                            <i className="far fa-comment"></i> 4
+                            <i className="far fa-comment"></i>
+                            {month}
                           </a>
                         </li>
                       </ul>
                     </div>
                     <div className="blog_single_heading">
-                      <h3>
-                        It is a long established fact that a reader will be.
-                      </h3>
+                      <h3>{label}</h3>
                     </div>
                     <div className="blog_single_text">
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Praesent vehicula mauris ac facilisis congue. Fusce sem
-                        enim, rhoncus volutpat condimentum ac, placerat semper
-                        ligula. Suspendisse in viverra justo, eu placerat urna.
-                        Vestibulum blandit diam suscipit nibh mattis
-                        ullamcorper. Nullam a condimentum nulla, ut facilisis
-                        enim. Aliquam sagittis ipsum ex, sed luctus augue
-                        venenatis ut. Fusce at rutrum tellus, ac elementum
-                        neque. In nec velit orci. Etiam purus felis,
-                        pellentesque sit amet tincidunt at, iaculis quis erat.
-                        Morbi imperdiet sodales sapien nec rhoncus.
-                      </p>
-                      <p>
-                        Donec placerat mi et libero iaculis, id maximus est
-                        vestibulum. Etiam augue augue, auctor at ornare eget,
-                        porta ac nisl. Aliquam et mattis dolor, et aliquet
-                        ligula. Sed ultricies posuere magna elementum laoreet.
-                        Suspendisse elementum sagittis nisl, id pellentesque
-                        purus auctor finibus. Donec elementum quam est, a
-                        condimentum diam tempor ac. Sed quis magna lobortis,
-                        pulvinar est at, commodo mauris. Nunc in mollis erat.
-                        Integer aliquet orci non auctor pretium. Pellentesque eu
-                        nisl augue. Curabitur vitae est ut sem luctus tristique.
-                        Suspendisse euismod sapien facilisis tellus aliquam
-                        pellentesque.
-                      </p>
-                      <blockquote>
-                        Mistaken idea of denouncing pleasure and praising pain
-                        was born and I will give you a complete account of the
-                        system, and expound the actual teachings of the great
-                        explorer of the truth, the master-builder of human
-                        happiness.
-                      </blockquote>
+                      <p>{para}</p>
+                      <blockquote>{blockquote}</blockquote>
                     </div>
                     <div className="blog_single_tags_bottom">
                       <ul>
                         <li>
-                          <i className="fas fa-tags"></i> Tags:
+                          <i className="fas fa-tags"></i> {tag}
                         </li>
                         <li>
-                          <a href="!#">Trucks</a>
+                          <a href="!#">{tagone}</a>
                         </li>
                         <li>
-                          <a href="!#">Transport</a>
+                          <a href="!#">{tagtwo}</a>
                         </li>
                         <li>
-                          <a href="!#">Warehouse</a>
+                          <a href="!#">{tagthree}</a>
                         </li>
                         <li>
-                          <a href="!#">Freight</a>
+                          <a href="!#">{tagfour}</a>
                         </li>
                         <li>
-                          <a href="!#">Cargo</a>
+                          <a href="!#">{tagfive}</a>
                         </li>
                       </ul>
                       <ul className="shared_post">
                         <li>
                           <a href="#!">
-                            <i className="fas fa-share-alt"></i>Share The Post
+                            <i className="fas fa-share-alt"></i>
+                            {share}
                           </a>
                         </li>
                       </ul>
                     </div>
                   </div>
                 </div>
-                <AllComment />
+                <AllComment blog={blog} />
                 <ReplayForm />
               </div>
             </div>
             <div className="col-lg-4 col-md-12 col-sm-12 col-12">
-              <BlogSidebar />
+              <BlogSidebar  blog={blog}/>
             </div>
           </div>
         </div>
