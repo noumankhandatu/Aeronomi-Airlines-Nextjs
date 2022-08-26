@@ -1,61 +1,16 @@
-import React, { useState, useEffect } from "react";
-import Prismic from "prismic-javascript";
+import React from "react";
 import SectionHeading from "../../Common/SectionHeading";
-import { Client } from "../../../prismic-configuration";
-
-const GetSchedule = () => {
-  const [toggleFn, setToggleFn] = useState(true);
-  const [fetchData, setFetchData] = useState("");
-  async function getServerSideProps() {
-    const home = await Client().query(
-      Prismic.Predicates.at("document.type", "home")
-    );
-    setFetchData(home);
-    return {
-      props: {
-        home,
-      },
-    };
-  }
-  if (toggleFn) {
-    getServerSideProps();
-    setToggleFn(!toggleFn);
-  }
-  const title = fetchData?.results?.map((items) => {
-    return items.data.body[1].items[0].title;
-  });
-  const description = fetchData?.results?.map((items) => {
-    return items.data.body[1].items[0].description;
-  });
-  const TrackOne = fetchData?.results?.map((items) => {
-    return items.data.trackone;
-  });
-  const TrackTwo = fetchData?.results?.map((items) => {
-    return items.data.tracktwo;
-  });
-  const TrackThree = fetchData?.results?.map((items) => {
-    return items.data.trackthree;
-  });
-  const containersone = fetchData?.results?.map((items) => {
-    return items.data.containersone;
-  });
-  const containertwo = fetchData?.results?.map((items) => {
-    return items.data.containertwo;
-  });
-  const emailone = fetchData?.results?.map((items) => {
-    return items.data.emailone;
-  });
-  const emailtwo = fetchData?.results?.map((items) => {
-    return items.data.emailtwo;
-  });
-  const scheduleone = fetchData?.results?.map((items) => {
-    return items.data.scheduleone;
-  });
-
-  useEffect(() => {
-    getServerSideProps();
-  }, []);
-
+const GetSchedule = ({ getSchData }) => {
+  const title = getSchData.data.body[1].items[0].title;
+  const description = getSchData.data.body[1].items[0].description;
+  const TrackOne = getSchData.data.trackone;
+  const TrackTwo = getSchData.data.tracktwo;
+  const TrackThree = getSchData.data.trackthree;
+  const containersone = getSchData.data.containersone;
+  const containertwo = getSchData.data.containertwo;
+  const emailone = getSchData.data.emailone;
+  const emailtwo = getSchData.data.emailtwo;
+  const scheduleone = getSchData.data.scheduleone;
   return (
     <>
       <section id="schedule_one">

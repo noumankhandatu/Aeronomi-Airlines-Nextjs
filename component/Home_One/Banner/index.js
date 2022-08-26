@@ -9,6 +9,7 @@ const HomeBanner = ({ homeData }) => {
     { width: 768, itemsToShow: 1 },
     { width: 1200, itemsToShow: 1 },
   ];
+
   const mapper = homeData?.data?.body?.map((data) => {
     return data?.items;
   });

@@ -1,14 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import LogisticsCard from "./LogisticsCard";
-import { LogisticsData } from "./Logistics_Data";
 import SectionHeading from "../../Common/SectionHeading";
 import Carousel from "react-elastic-carousel";
-import { Client } from "../../../prismic-configuration";
-import Prismic from "prismic-javascript";
 
-const LogisticsService = () => {
+const LogisticsService = ({ logData }) => {
   const [sliderIndex, setSliderIndex] = useState(0);
-
   const breakPoints = [
     { width: 1, itemsToShow: 1 },
     { width: 550, itemsToShow: 2, itemsToScroll: 2 },
@@ -16,110 +12,46 @@ const LogisticsService = () => {
     { width: 1200, itemsToShow: 4 },
   ];
 
-  const [toggleFn, setToggleFn] = useState(true);
-  const [fetchData, setFetchData] = useState("");
-  async function getServerSideProps() {
-    const home = await Client().query(
-      Prismic.Predicates.at("document.type", "home")
-    );
-    setFetchData(home);
-    return {
-      props: {
-        home,
-      },
-    };
-  }
-  if (toggleFn) {
-    getServerSideProps();
-    setToggleFn(!toggleFn);
-  }
-
-  const title = fetchData?.results?.map((items) => {
-    return items.data.body[2].items[0].title;
-  });
-  const description = fetchData?.results?.map((items) => {
-    return items.data.body[2].items[0].description;
-  });
-
-  const itemCaroTextOne = fetchData?.results?.map((items) => {
-    return items.data.itemcarotextone;
-  });
-  const itemCaroTextTwo = fetchData?.results?.map((items) => {
-    return items.data.itemcarotexttwo;
-  });
-  const itemCaroTextThree = fetchData?.results?.map((items) => {
-    return items.data.itemcarotextthree;
-  });
-
-  const itemImageOne = fetchData?.results?.map((items) => {
-    return items.data.itemimageone.url;
-  });
-  const itemHeadingOne = fetchData?.results?.map((items) => {
-    return items.data.itemheadingone;
-  });
-  const itemParaOne = fetchData?.results?.map((items) => {
-    return items.data.itemparaone;
-  });
-
-  const itemImageTwo = fetchData?.results?.map((items) => {
-    return items.data.itemimagetwo.url;
-  });
-  const itemHeadingTwo = fetchData?.results?.map((items) => {
-    return items.data.itemheadingtwo;
-  });
-  const itemParaTwo = fetchData?.results?.map((items) => {
-    return items.data.itemparatwo;
-  });
-
-  const itemImageThree = fetchData?.results?.map((items) => {
-    return items.data.itemimagethree.url;
-  });
-  const itemHeadingThree = fetchData?.results?.map((items) => {
-    return items.data.itemheadingthree;
-  });
-  const itemParaThree = fetchData?.results?.map((items) => {
-    return items.data.itemparathree;
-  });
+  const title = logData.data.body[2].items[0].title;
+  const description = logData.data.body[2].items[0].description;
+  const itemCaroTextOne = logData.data.itemcarotextone;
+  const itemCaroTextTwo = logData.data.itemcarotexttwo;
+  const itemCaroTextThree = logData.data.itemcarotextthree;
+  const itemImageOne = logData.data.itemimageone.url;
+  const itemHeadingOne = logData.data.itemheadingone;
+  const itemParaOne = logData.data.itemparaone;
+  const itemImageTwo = logData.data.itemimagetwo.url;
+  const itemHeadingTwo = logData.data.itemheadingtwo;
+  const itemParaTwo = logData.data.itemparatwo;
+  const itemImageThree = logData.data.itemimagethree.url;
+  const itemHeadingThree = logData.data.itemheadingthree;
+  const itemParaThree = logData.data.itemparathree;
 
   const LogisticsData = [
     [
       {
         img: itemImageOne,
         heading: itemHeadingOne,
-        para: itemParaOne
-          ? itemParaOne
-          : `All our efforts and investments are geared towards offering better solutions.`,
+        para: itemParaOne,
       },
       {
         img: itemImageTwo,
-        heading: itemHeadingTwo ? itemHeadingTwo : `Business Charter`,
-        para: itemParaTwo
-          ? itemParaTwo
-          : `All our efforts and investments are geared towards offering better solutions.`,
+        heading: itemHeadingTwo,
+        para: itemParaTwo,
       },
       {
         img: itemImageThree,
-        heading: itemHeadingThree ? itemHeadingThree : `Air Cargo`,
-        para: itemParaThree
-          ? itemParaThree
-          : `All our efforts and investments are geared towards offering better solutions.`,
+        heading: itemHeadingThree,
+        para: itemParaThree,
       },
     ],
   ];
-
-  useEffect(() => {
-    getServerSideProps();
-  }, []);
 
   return (
     <>
       <section id="logistics_area">
         <div className="container">
-          <SectionHeading
-            heading="Logistics Services"
-            para="Solving your supply chain needs from end to end, taking the
-             complexity out of container shipping. We are at the forefront of developing innovation."
-          />
+          <SectionHeading heading={title} para={description} />
           <div className="row">
             <div className="col-md-12">
               <div className="logistics_wrappers">
@@ -130,7 +62,7 @@ const LogisticsService = () => {
                         className={sliderIndex === 0 ? "active" : ""}
                         // onClick={() => setSliderIndex(0)}
                       >
-                        Business Logistics
+                        {itemCaroTextOne}
                       </button>
                     </li>
                     <li>
@@ -138,7 +70,7 @@ const LogisticsService = () => {
                         className={sliderIndex === 1 ? "active" : ""}
                         // onClick={() => setSliderIndex(1)}
                       >
-                        Military Logistics
+                        {itemCaroTextTwo}
                       </button>
                     </li>
                     <li>
@@ -146,7 +78,7 @@ const LogisticsService = () => {
                         className={sliderIndex === 2 ? "active" : ""}
                         // onClick={() => setSliderIndex(2)}
                       >
-                        Event Logistics
+                        {itemCaroTextThree}
                       </button>
                     </li>
                   </ul>

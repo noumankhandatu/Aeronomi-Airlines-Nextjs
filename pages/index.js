@@ -14,7 +14,6 @@ import sm from "../sm.json";
 import * as prismic from "@prismicio/client";
 
 export default function Home({ home }) {
-  console.log(home, "helo home");
   return (
     <div>
       <Head>
@@ -32,8 +31,8 @@ export default function Home({ home }) {
       </Head>
       <div>
         <HomeBanner homeData={home} />
-        <GetSchedule />
-        <LogisticsService />
+        <GetSchedule getSchData={home} />
+        <LogisticsService logData={home} />
         <HomeAbout />
         <OurAdvantage />
         <MapArea />
