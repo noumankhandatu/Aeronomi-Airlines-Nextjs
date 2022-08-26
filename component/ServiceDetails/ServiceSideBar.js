@@ -1,64 +1,82 @@
 import React from "react";
 import Link from "next/link";
-// ServiceSideBar Area
-const ServiceSideBar = () => {
+const ServiceSideBar = ({ services }) => {
+  const Service = services?.data?.service;
+  const Finance = services?.data?.finance;
+  const Healthcare = services?.data?.healthcare;
+  const Strategic = services?.data?.strategic;
+  const Contingency = services?.data?.contingency;
+  const Mergers = services?.data?.mergers;
+  const Marketing = services?.data?.marketing;
+  const Brochures = services?.data?.brochures;
+  const Brochur = services?.data?.brochur;
+  const Compa = services?.data?.compa;
+  const Contact = services?.data?.contact;
+  const Visit = services?.data?.visit;
+  const Cargo = services?.data?.cargo;
+  const Call = services?.data?.call;
+  const Office = services?.data?.office;
+  const Tollfree = services?.data?.tollfree;
+  const Mail = services?.data?.mail;
+  const Mailus = services?.data?.mailus;
   return (
     <>
       <div className="col-lg-4">
         <div className="service_details_sidebar">
           <div className="sidebar_service_wrappers">
-            <h3>Our Service</h3>
+            <h3>{Service ? Service : `pending`}</h3>
             <ul>
               <li>
-                <Link href="/service">Finance Audit</Link>
+                <Link href="/service">{Finance}</Link>
               </li>
               <li>
-                <Link href="/service">Healthcare Consulting</Link>
+                <Link href="/service">{Healthcare}</Link>
               </li>
               <li>
-                <Link href="/service">Strategic Marketing</Link>
+                <Link href="/service">{Strategic}</Link>
               </li>
               <li>
-                <Link href="/service">Contingency Plans</Link>
+                <Link href="/service">{Contingency}</Link>
               </li>
               <li>
-                <Link href="/service">Mergers & Acquisitions</Link>
+                <Link href="/service">{Mergers}</Link>
               </li>
               <li>
-                <Link href="/service">Marketing & Sales</Link>
+                <Link href="/service">{Marketing}</Link>
               </li>
             </ul>
           </div>
           <div className="sidebar_service_wrappers">
-            <h3>Our Brochures</h3>
+            <h3>{Brochures}</h3>
             <ul>
               <li>
                 <a href="#!">
-                  {" "}
-                  <i className="far fa-file-pdf"></i> Service Brochure.Pdf
+                  <i className="far fa-file-pdf"></i>
+                  {Brochur}
                 </a>
               </li>
               <li>
                 <a href="#!">
-                  <i className="far fa-file-word"></i> About Company.Doc
+                  <i className="far fa-file-word"></i>
+                  {Compa}
                 </a>
               </li>
             </ul>
           </div>
           <div className="sidebar_service_wrappers">
-            <h3>Contact Us</h3>
+            <h3>{Contact}</h3>
             <div className="contact_sidebar">
-              <h6>Visit our office</h6>
-              <p>244, Cargo Hub, Los Angeles, California- 90005</p>
+              <h6>{Visit}</h6>
+              <p>{Cargo}</p>
             </div>
             <div className="contact_sidebar">
-              <h6>Call us on</h6>
-              <p>Office: +44 567 890123</p>
-              <p> Tollfree: 1800-123-45-6789</p>
+              <h6>{Call}</h6>
+              <p>{Office}</p>
+              <p> {Tollfree}</p>
             </div>
             <div className="contact_sidebar">
-              <h6>Mail Us at</h6>
-              <p>Mailus@CargoHub.com</p>
+              <h6>{Mail}</h6>
+              <p>{Mailus}</p>
             </div>
           </div>
         </div>

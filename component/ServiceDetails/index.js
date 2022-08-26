@@ -1,17 +1,15 @@
 import React from "react";
-// Import ServiceSideBar
 import ServiceSideBar from "./ServiceSideBar";
-// Import ServiceContent
 import ServiceContent from "./ServiceContent";
 
-const ServiceDetailsMain = () => {
+const ServiceDetailsMain = ({ services }) => {
   return (
     <>
       <section id="service_details_area">
         <div className="container">
           <div className="row">
-            <ServiceContent />
-            <ServiceSideBar />
+            <ServiceContent services={services} />
+            <ServiceSideBar services={services} />
           </div>
         </div>
       </section>
