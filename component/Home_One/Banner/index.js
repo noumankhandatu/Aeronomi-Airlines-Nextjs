@@ -1,37 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Link from "next/link";
 import Carousel from "react-elastic-carousel";
-import * as prismic from "@prismicio/client";
-import sm from "../../../sm.json";
 
-const HomeBanner = () => {
+const HomeBanner = ({ homeData }) => {
   const breakPoints = [
     { width: 1, itemsToShow: 1 },
     { width: 550, itemsToShow: 1, itemsToScroll: 1 },
     { width: 768, itemsToShow: 1 },
     { width: 1200, itemsToShow: 1 },
   ];
-
-  const [toggleFn, setToggleFn] = useState(true);
-  const [fetchData, setFetchData] = useState("");
-
-  async function getStaticProps() {
-    const client = prismic.createClient(sm.apiEndpoint);
-    const home = await client.getByUID("home", "id-is-home");
-    setFetchData(home);
-    return {
-      props: {
-        home,
-      },
-    };
-  }
-
-  if (toggleFn) {
-    getStaticProps();
-    setToggleFn(!toggleFn);
-  }
-
-  const mapper = fetchData?.data?.body?.map((data) => {
+  const mapper = homeData?.data?.body?.map((data) => {
     return data?.items;
   });
   const firstCaroBtnText = mapper?.map((items) => {
@@ -72,9 +50,7 @@ const HomeBanner = () => {
   const ThirdCaroTitle = mapper?.map((items) => {
     return items[2]?.title1;
   });
-  useEffect(() => {
-    getStaticProps();
-  }, []);
+
   return (
     <div>
       <section id="homeOne_banner">
