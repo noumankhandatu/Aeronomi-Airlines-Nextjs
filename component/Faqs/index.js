@@ -1,12 +1,7 @@
 import React from "react";
-// Import FaqsData Area
-import { FaqsData } from "./FaqsData";
-// Import QuestionForm Area
 import QuestionForm from "../Faqs/QuestionForm";
-// FaqsArea Area
 const AllFaqs = ({ faq }) => {
   const Data = faq?.data?.body[1]?.items;
-  console.log(Data);
   return (
     <>
       <section id="faqs_area">
@@ -31,7 +26,7 @@ const AllFaqs = ({ faq }) => {
                                   aria-expanded="false"
                                   aria-controls={"collapse" + index}
                                 >
-                                  {data.list ? data.list : `pending`}
+                                  {data.list}
                                 </a>
                               </h5>
                             </div>
@@ -46,7 +41,7 @@ const AllFaqs = ({ faq }) => {
                               data-parent={"#accordion"}
                             >
                               <div className="card-body active">
-                                <p>{data.count ? data.count : `pending`}</p>
+                                <p>{data.count}</p>
                               </div>
                             </div>
                           </div>

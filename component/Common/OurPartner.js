@@ -47,19 +47,19 @@ const OurPartner = () => {
   });
   const OurPartnerData = [
     {
-      img: firstimage ? firstimage : `pending`,
+      img: firstimage,
     },
     {
-      img: secondimage ? secondimage : `pending`,
+      img: secondimage,
     },
     {
-      img: thirdimage ? thirdimage : `pending`,
+      img: thirdimage,
     },
     {
-      img: fourthimage ? fourthimage : `pending`,
+      img: fourthimage,
     },
     {
-      img: fifthimage ? fifthimage : `pending`,
+      img: fifthimage,
     },
   ];
   useEffect(() => {

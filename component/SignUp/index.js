@@ -20,7 +20,7 @@ const SignUpForm = (props) => {
                           tag={"input"}
                           type={"text"}
                           name={"f_name"}
-                          classes={"form-control"}
+                          classes={"form-control my-2"}
                           placeholder={"First Name"}
                         />
                       </div>
@@ -29,7 +29,7 @@ const SignUpForm = (props) => {
                           tag={"input"}
                           type={"text"}
                           name={"l_name"}
-                          classes={"form-control"}
+                          classes={"form-control my-2"}
                           placeholder={"Last Name"}
                         />
                       </div>
@@ -38,7 +38,7 @@ const SignUpForm = (props) => {
                           tag={"input"}
                           type={"text"}
                           name={"user_name"}
-                          classes={"form-control"}
+                          classes={"form-control my-2"}
                           placeholder={"User Name"}
                         />
                       </div>
@@ -47,7 +47,7 @@ const SignUpForm = (props) => {
                           tag={"input"}
                           type={"text"}
                           name={"email"}
-                          classes={"form-control"}
+                          classes={"form-control my-2"}
                           placeholder={"Email Address"}
                         />
                       </div>
@@ -56,7 +56,7 @@ const SignUpForm = (props) => {
                           tag={"input"}
                           type={"password"}
                           name={"password"}
-                          classes={"form-control"}
+                          classes={"form-control my-2"}
                           placeholder={"Password"}
                         />
                       </div>
@@ -65,12 +65,12 @@ const SignUpForm = (props) => {
                           tag={"input"}
                           type={"password"}
                           name={"c_password"}
-                          classes={"form-control"}
+                          classes={"form-control my-2"}
                           placeholder={"Confirm Password"}
                         />
                       </div>
                       <div className="col-lg-12">
-                        <div className="form-group form-check">
+                        <div className="form-group form-check my-3">
                           <input
                             type="checkbox"
                             className="form-check-input"
@@ -85,14 +85,14 @@ const SignUpForm = (props) => {
                         </div>
                       </div>
                       <div className="col-lg-12">
-                        <div className="submit_button">
+                        <div className="submit_button ">
                           <FormInput tag={"button"} val={"Sign Up"} />
                         </div>
                       </div>
                       <div className="col-lg-12">
                         <div className="not_remember_area">
                           <p>
-                            Already have an account?{" "}
+                            Already have an account?
                             <Link href="/signIn"> Sign Up</Link>
                           </p>
                         </div>

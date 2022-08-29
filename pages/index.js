@@ -37,7 +37,7 @@ export default function Home({ home }) {
         <OurAdvantage ourAdv={home} />
         <MapArea mapArea={home} />
         <Testimonials testi={home} />
-        <PricingTable  />
+        <PricingTable />
         <Subscribe subData={home} />
         <BlogHome blogData={home} />
       </div>

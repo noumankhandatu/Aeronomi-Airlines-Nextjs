@@ -1,7 +1,9 @@
 import React from "react";
 import Link from "next/link";
 
-const ErrorMessages = () => {
+const ErrorMessages = ({ error }) => {
+  const image = error?.data?.image?.url;
+  const text = error?.data?.text;
   return (
     <>
       <section id="error_area">
@@ -9,8 +11,8 @@ const ErrorMessages = () => {
           <div className="d-table-cell">
             <div className="container">
               <div className="error-img">
-                <img src={"https://picsum.photos/200/300"} alt="Error Imgs" />
-                <h3>Page Not Found</h3>
+                <img src={image} alt="Error Imgs" />
+                <h3>{text}</h3>
                 <Link href="/" className="btn btn-theme">
                   Back To Home
                 </Link>

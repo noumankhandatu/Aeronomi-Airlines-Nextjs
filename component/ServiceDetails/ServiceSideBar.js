@@ -24,7 +24,7 @@ const ServiceSideBar = ({ services }) => {
       <div className="col-lg-4">
         <div className="service_details_sidebar">
           <div className="sidebar_service_wrappers">
-            <h3>{Service ? Service : `pending`}</h3>
+            <h3>{Service}</h3>
             <ul>
               <li>
                 <Link href="/service">{Finance}</Link>

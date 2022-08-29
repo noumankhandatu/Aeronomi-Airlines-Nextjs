@@ -12,18 +12,18 @@ const ContactInfo = ({ contact }) => {
     <>
       <div className="contact_info_wrapper">
         <div className="contact_item">
-          <h5>{labeladdress ? labeladdress : `pending`}</h5>
-          <p>{address ? address : `pending`}</p>
+          <h5>{labeladdress}</h5>
+          <p>{address}</p>
         </div>
         <div className="contact_item">
-          <h5>{call ? call : `pending`}</h5>
-          <p>{phonenumber ? phonenumber : `pending`}</p>
-          <p>{customercare ? customercare : `pending`}</p>
+          <h5>{call}</h5>
+          <p>{phonenumber}</p>
+          <p>{customercare}</p>
         </div>
         <div className="contact_item">
-          <h5>{mail ? mail : `pending`}</h5>
-          <p>{mailcom ? mailcom : `pending`}</p>
-          <p>{yahoo ? yahoo : `pending`}</p>
+          <h5>{mail}</h5>
+          <p>{mailcom}</p>
+          <p>{yahoo}</p>
         </div>
       </div>
     </>

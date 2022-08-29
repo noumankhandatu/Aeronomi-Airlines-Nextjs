@@ -20,7 +20,7 @@ const SignInForm = (props) => {
                           tag={"input"}
                           type={"text"}
                           name={"email"}
-                          classes={"form-control"}
+                          classes={"form-control my-3"}
                           placeholder={"Username or Email"}
                         />
                       </div>
@@ -29,12 +29,12 @@ const SignInForm = (props) => {
                           tag={"input"}
                           type={"password"}
                           name={"password"}
-                          classes={"form-control"}
+                          classes={"form-control my-3"}
                           placeholder={"Password"}
                         />
                       </div>
-                      <div className="col-lg-12">
-                        <div className="form-group form-check">
+                      <div className="col-lg-12 ">
+                        <div className="form-group form-check my-4">
                           <input
                             type="checkbox"
                             className="form-check-input"

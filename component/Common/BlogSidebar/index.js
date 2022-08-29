@@ -12,7 +12,7 @@ const BlogSidebar = ({ blog }) => {
       <div className="blog_sidebar_wrapper">
         <div className="blog_sidebar_item">
           <div className="blog_sidebar_heading">
-            <h3>{search ? search : `pending`}</h3>
+            <h3>{search}</h3>
           </div>
           <div className="blog-search">
             <input type="text" className="form-control" />
@@ -21,7 +21,7 @@ const BlogSidebar = ({ blog }) => {
         </div>
         <div className="blog_sidebar_item">
           <div className="blog_sidebar_heading">
-            <h3>{catogery ? catogery : `pending`}</h3>
+            <h3>{catogery}</h3>
           </div>
           <div className="sidebar-categorie-list">
             <ul>
@@ -29,8 +29,8 @@ const BlogSidebar = ({ blog }) => {
                 Category?.map((data, index) => (
                   <li key={index}>
                     <a href="#!">
-                      <span>{data.list ? data.list : `pending`}</span>
-                      <span>{data.count ? data.count : `pending`}</span>
+                      <span>{data.list}</span>
+                      <span>{data.count}</span>
                     </a>
                   </li>
                 ))}
@@ -39,7 +39,7 @@ const BlogSidebar = ({ blog }) => {
         </div>
         <div className="blog_sidebar_item">
           <div className="blog_sidebar_heading">
-            <h3>{popular ? popular : `pending`}</h3>
+            <h3>{popular}</h3>
           </div>
           <div className="popular_post_wrapper">
             {RealData &&
@@ -47,21 +47,16 @@ const BlogSidebar = ({ blog }) => {
                 <div className="popular_post_item" key={index}>
                   <div className="populer_post_img">
                     <Link href="/blog_details">
-                      <img
-                        src={data.bgimage ? data.bgimage.url : `pending`}
-                        alt="img"
-                      />
+                      <img src={data.bgimage} alt="img" />
                     </Link>
                   </div>
                   <div className="popular_post_text">
                     <h4>
-                      <Link href="/blog_details">
-                        {data.bannerheading ? data.bannerheading : `pending`}
-                      </Link>
+                      <Link href="/blog_details">{data.bannerheading}</Link>
                     </h4>
                     <p>
                       <i className="far fa-clock"></i>
-                      {data.bannerpage ? data.bannerpage : `pending`}
+                      {data.bannerpage}
                     </p>
                   </div>
                 </div>

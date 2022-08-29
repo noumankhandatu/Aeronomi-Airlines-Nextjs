@@ -2,7 +2,7 @@ import React from "react";
 
 const AllComment = ({ blog }) => {
   const Data = blog?.data?.body[8]?.items;
-  
+
   return (
     <div className="blog_single_item">
       <div className="blog_sidebar_heading">
@@ -16,18 +16,15 @@ const AllComment = ({ blog }) => {
             return (
               <>
                 <div className="comment_item">
-                  <img
-                    src={image1.url ? image1.url : `pending`}
-                    alt="Blogger_Img"
-                  />
+                  <img src={image1.url} alt="Blogger_Img" />
                   <div className="comments_text">
                     <div className="comment_heading_flex">
-                      <h5>{person ? person : `pending`} </h5>
+                      <h5>{person} </h5>
                       <a href="#!">
                         <i className="fas fa-share"></i>
                       </a>
                     </div>
-                    <p>{comment ? comment : `pending`}</p>
+                    <p>{comment}</p>
                   </div>
                 </div>
               </>

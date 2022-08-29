@@ -110,10 +110,7 @@ const ServicesCard = ({ services }) => {
     <>
       <section id="services_page">
         <div className="container">
-          <SectionHeading
-            heading={title ? title : `pending`}
-            para={description ? description : `pending`}
-          />
+          <SectionHeading heading={title} para={description} />
           <div className="service_wrapper_top">
             <div className="row">
               {ServiceData.map((data, index) => (
