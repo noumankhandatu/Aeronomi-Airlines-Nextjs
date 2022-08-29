@@ -1,29 +1,7 @@
 import React from "react";
-// import ReactFancyBox from "react-fancybox";
-// import "react-fancybox/lib/fancybox.css";
 
-const GalleryData = [
-  {
-    img: "https://picsum.photos/200/300",
-  },
-  {
-    img: "https://picsum.photos/200/300",
-  },
-  {
-    img: "https://picsum.photos/200/300",
-  },
-  {
-    img: "https://picsum.photos/200/300",
-  },
-  {
-    img: "https://picsum.photos/200/300",
-  },
-  {
-    img: "https://picsum.photos/200/300",
-  },
-];
-
-const GalleryImages = () => {
+const GalleryImages = ({ gallery }) => {
+  const GalleryData = gallery?.data?.body[1]?.items;
   return (
     <>
       <section id="gallery_area">
@@ -32,7 +10,7 @@ const GalleryImages = () => {
             {GalleryData.map((data, index) => (
               <div className="col-lg-4 col-md-6 col-sm-6 col-12" key={index}>
                 <div className="single-gallery">
-                  <img src={data.img} alt="" />
+                  <img src={data.img.url} alt="" />
                   {/* <ReactFancyBox thumbnail={data.img} image={data.img} /> */}
                 </div>
               </div>

@@ -1,6 +1,5 @@
 import React from "react";
 import ClientCard from "../Common/Client/ClientCard";
-import { ClientsData } from "../Common/Client/ClientData";
 import Carousel from "react-elastic-carousel";
 
 const breakPoints = [
