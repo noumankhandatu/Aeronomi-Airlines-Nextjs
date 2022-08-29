@@ -1,46 +1,147 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import SectionHeading from "./SectionHeading";
+import Prismic from "prismic-javascript";
+import { Client } from "../../prismic-configuration";
 
-const PricingTable = ({ priceData }) => {
-  const titleOne = priceData.data.body[6].items[0].title;
-  const amountOne = priceData.data.body[6].items[0].amount;
-  const iconone = priceData.data.body[6].items[0].iconone;
-  const icontwo = priceData.data.body[6].items[0].icontwo;
-  const iconthree = priceData.data.body[6].items[0].iconthree;
-  const iconfour = priceData.data.body[6].items[0].iconfour;
-  const iconfive = priceData.data.body[6].items[0].iconfive;
-  const featureone = priceData.data.body[6].items[0].featureone;
-  const featuretwo = priceData.data.body[6].items[0].featuretwo;
-  const featurethree = priceData.data.body[6].items[0].featurethree;
-  const featurefour = priceData.data.body[6].items[0].featurefour;
-  const featurefive = priceData.data.body[6].items[0].featurefive;
-  const titleTwo = priceData.data.body[6].items[1].title;
-  const amountTwo = priceData.data.body[6].items[1].amount;
-  const iconones = priceData.data.body[6].items[1].iconone;
-  const icontwos = priceData.data.body[6].items[1].icontwo;
-  const iconthrees = priceData.data.body[6].items[1].iconthree;
-  const iconfours = priceData.data.body[6].items[1].iconfour;
-  const iconfives = priceData.data.body[6].items[1].iconfive;
-  const featureones = priceData.data.body[6].items[1].featureone;
-  const featuretwos = priceData.data.body[6].items[1].featuretwo;
-  const featurethrees = priceData.data.body[6].items[1].featurethree;
-  const featurefours = priceData.data.body[6].items[1].featurefour;
-  const featurefives = priceData.data.body[6].items[1].featurefive;
-  const titleThree = priceData.data.body[6].items[2].title;
-  const amountThree = priceData.data.body[6].items[2].amount;
-  const icononest = priceData.data.body[6].items[2].iconone;
-  const icontwost = priceData.data.body[6].items[2].icontwo;
-  const iconthreest = priceData.data.body[6].items[2].iconthree;
-  const iconfourst = priceData.data.body[6].items[2].iconfour;
-  const iconfivest = priceData.data.body[6].items[2].iconfive;
-  const featureonest = priceData.data.body[6].items[2].featureone;
-  const featuretwost = priceData.data.body[6].items[2].featuretwo;
-  const featurethreest = priceData.data.body[6].items[2].featurethree;
-  const featurefourst = priceData.data.body[6].items[2].featurefour;
-  const featurefivest = priceData.data.body[6].items[2].featurefive;
-  const buttonText = priceData.data.body[6].items[2].buttontext;
-  const perMonth = priceData.data.body[6].items[2].permonth;
+const PricingTable = () => {
+  const [toggleFn, setToggleFn] = useState(true);
+  const [fetchData, setFetchData] = useState("");
+  async function getServerSideProps() {
+    const home = await Client().query(
+      Prismic.Predicates.at("document.type", "home")
+    );
+    setFetchData(home);
+    return {
+      props: {
+        home,
+      },
+    };
+  }
+  if (toggleFn) {
+    getServerSideProps();
+    setToggleFn(!toggleFn);
+  }
+
+  const titleOne = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[0].title;
+  });
+  const amountOne = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[0].amount;
+  });
+
+  const iconone = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[0].iconone;
+  });
+  const icontwo = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[0].icontwo;
+  });
+  const iconthree = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[0].iconthree;
+  });
+  const iconfour = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[0].iconfour;
+  });
+  const iconfive = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[0].iconfive;
+  });
+  const featureone = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[0].featureone;
+  });
+  const featuretwo = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[0].featuretwo;
+  });
+  const featurethree = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[0].featurethree;
+  });
+  const featurefour = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[0].featurefour;
+  });
+  const featurefive = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[0].featurefive;
+  });
+
+  const titleTwo = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[1].title;
+  });
+  const amountTwo = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[1].amount;
+  });
+
+  const iconones = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[1].iconone;
+  });
+  const icontwos = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[1].icontwo;
+  });
+  const iconthrees = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[1].iconthree;
+  });
+  const iconfours = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[1].iconfour;
+  });
+  const iconfives = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[1].iconfive;
+  });
+  const featureones = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[1].featureone;
+  });
+  const featuretwos = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[1].featuretwo;
+  });
+  const featurethrees = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[1].featurethree;
+  });
+  const featurefours = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[1].featurefour;
+  });
+  const featurefives = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[1].featurefive;
+  });
+
+  const titleThree = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[2].title;
+  });
+  const amountThree = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[2].amount;
+  });
+
+  const icononest = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[2].iconone;
+  });
+  const icontwost = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[2].icontwo;
+  });
+  const iconthreest = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[2].iconthree;
+  });
+  const iconfourst = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[2].iconfour;
+  });
+  const iconfivest = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[2].iconfive;
+  });
+  const featureonest = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[2].featureone;
+  });
+  const featuretwost = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[2].featuretwo;
+  });
+  const featurethreest = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[2].featurethree;
+  });
+  const featurefourst = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[2].featurefour;
+  });
+  const featurefivest = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[2].featurefive;
+  });
+  const buttonText = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[2].buttontext;
+  });
+  const perMonth = fetchData?.results?.map((items) => {
+    return items.data.body[6].items[2].permonth;
+  });
   const pricingData = [
     {
       title: titleOne,
@@ -77,6 +178,10 @@ const PricingTable = ({ priceData }) => {
     },
   ];
 
+  useEffect(() => {
+    getServerSideProps();
+  }, []);
+
   return (
     <>
       <section id="home_pricing_area">
@@ -112,7 +217,7 @@ const PricingTable = ({ priceData }) => {
                   </div>
                   <div class="table-footer">
                     <Link href="/pricing" class="btn btn-theme">
-                      {buttonText}
+                      <div>{buttonText}</div>
                     </Link>
                   </div>
                 </div>

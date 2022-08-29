@@ -10,8 +10,8 @@ import Testimonials from "../component/Home_One/Testimonial";
 import PricingTable from "../component/Common/PricingTable";
 import Subscribe from "../component/Common/Subscribe";
 import BlogHome from "../component/Common/Blog";
-import sm from "../sm.json";
 import * as prismic from "@prismicio/client";
+import sm from "../sm.json";
 
 export default function Home({ home }) {
   return (
@@ -37,7 +37,7 @@ export default function Home({ home }) {
         <OurAdvantage ourAdv={home} />
         <MapArea mapArea={home} />
         <Testimonials testi={home} />
-        <PricingTable priceData={home} />
+        <PricingTable  />
         <Subscribe subData={home} />
         <BlogHome blogData={home} />
       </div>

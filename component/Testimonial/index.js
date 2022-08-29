@@ -5,12 +5,13 @@ import Carousel from "react-elastic-carousel";
 
 const breakPoints = [
   { width: 1, itemsToShow: 1 },
-  { width: 550, itemsToShow: 2, itemsToScroll: 2 },
-  { width: 768, itemsToShow: 3 },
-  { width: 1200, itemsToShow: 4 },
+  { width: 550, itemsToShow: 1, itemsToScroll: 1 },
+  { width: 768, itemsToShow: 1 },
+  { width: 1200, itemsToShow: 1 },
 ];
 
-const TestimonialSlider = () => {
+const TestimonialSlider = ({ testimonials }) => {
+  const Data = testimonials?.data?.body[1]?.items;
   return (
     <>
       <section id="testimonial_homeTwo">
@@ -26,12 +27,12 @@ const TestimonialSlider = () => {
                     showArrows={false}
                     breakPoints={breakPoints}
                   >
-                    {ClientsData.map((data, index) => (
+                    {Data.map((data, index) => (
                       <ClientCard
-                        img={data.img}
-                        name={data.name}
-                        des={data.des}
-                        para={data.para}
+                        img={data?.image?.url}
+                        name={data?.name}
+                        des={data?.des}
+                        para={data?.para}
                         key={index}
                       />
                     ))}
